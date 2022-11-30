@@ -16,59 +16,59 @@ Following components will be used:
 
 > First, we have to have a clear picture of our endgoal 
  
- - using WOULD Framework for planning
-	 1. Walk through application
-		 - decide on primary goal & focus on that
-		 - ask questions (they bring out features)
-			 - *Do we want authentication?*
-			 - *Offensive content filter? *
-		 - not every feature / idea must be in the first version of the project
-			 -  *Add content / status filters -> Maybe in Version 1.1*
-	 2. Open up the requirements
-		 - Question form requirements 
+- using WOULD Framework for planning
+	1. Walk through application
+		- decide on primary goal & focus on that
+		- ask questions (they bring out features)
+			- *Do we want authentication?*
+			- *Offensive content filter? *
+		- not every feature / idea must be in the first version of the project
+			-  *Add content / status filters -> Maybe in Version 1.1*
+	2. Open up the requirements
+		- Question form requirements 
 			 - *Do we want authentication? -> Authentication / Login*
 			 - *Offensive content filter? -> Approve questions as admin*
-	 3. UI design 
-		 -  note down elements (sketching with pen & paper) 
-		 - user flow of the app (wireframing) (figma)
-		 - design for mobil, tablets & monitors
-	 4. Logic design (big picture)
-		 - Blazor Server (can talk directly to a database + client side feeling)
-		 - Scalability / Efficency
-			 - aiming for a spot in the middle between mvp & can handle thousands of people at the same time
-			 - use Virtualize (lazy load)
-			 - In-Memory Caching
-		 - Azure Active Directory B2C for authentification & authorization
-		 - Store Data (MongoDB -> NoSql DB)
-	 5. Data design 	 
-		 - outline the bigger design pieces & how they work together
-			 - pieces:
-				 - *category*
-					 - CategoryName
-					 - CategoryDescription
-				 - *status*
-					 - StatusName
-					 - StatusDescription
-				 - *user*
-					 - ObjectId
-					 - FirstName
-					 - LastName
-					 - DisplayName
-					 - E-Mail
-					 - AuthoredSuggestions
-					 - VotedOnSuggestions
-				 - *suggestion*
-					 - Suggestion
-					 - Description
-					 - DateCreated
-					 - Category
-					 - Author
-					 - UserVotes
-					 - SuggestionStatus
-					 - OwnerNotes
-					 - ApprovedForRelease
-					 - Rejected
-					 - Archived
+	3. UI design 
+		- note down elements (sketching with pen & paper) 
+		- user flow of the app (wireframing) (figma)
+		- design for mobil, tablets & monitors
+	4. Logic design (big picture)
+		- Blazor Server (can talk directly to a database + client side feeling)
+		- Scalability / Efficency
+			- aiming for a spot in the middle between mvp & can handle thousands of people at the same time
+			- use Virtualize (lazy load)
+			- In-Memory Caching
+		- Azure Active Directory B2C for authentification & authorization
+		- Store Data (MongoDB -> NoSql DB)
+	5. Data design 	 
+		- outline the bigger design pieces & how they work together
+			- pieces:
+				- *category*
+					- CategoryName
+					- CategoryDescription
+				- *status*
+					- StatusName
+					- StatusDescription
+				- *user*
+					- ObjectId
+					- FirstName
+					- LastName
+					- DisplayName
+					- E-Mail
+					- AuthoredSuggestions
+					- VotedOnSuggestions
+				- *suggestion*
+					- Suggestion
+					- Description
+					- DateCreated
+					- Category
+					- Author
+					- UserVotes
+					- SuggestionStatus
+					- OwnerNotes
+					- ApprovedForRelease
+					- Rejected
+					- Archived
 
 ***
 

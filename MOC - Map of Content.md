@@ -2,15 +2,15 @@
 
 ### B
 
- - [Blazor Client](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorClient.md)
+- [Blazor Client](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorClient.md)
 
- - [Blazor Server](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorServer.md)
+- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorServer.md)
 
- - [Blazor Web Assembly](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorWebAssembly.md)
+- [Blazor Web Assembly](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorWebAssembly.md)
 
 ### C
 
- - [Client Side](https://github.com/lucasmenke/notes/blob/main/dictionary/ClientSide.md)
+- [Client Side](https://github.com/lucasmenke/notes/blob/main/dictionary/ClientSide.md)
 
 ### D
 
@@ -24,21 +24,21 @@
 
 ### H
 
- - [HashSet](https://github.com/lucasmenke/notes/blob/main/dictionary/HashSet.md)
+- [HashSet](https://github.com/lucasmenke/notes/blob/main/dictionary/HashSet.md)
 
 ### M
 
- - [MVC C#](https://github.com/lucasmenke/notes/blob/main/dictionary/MVCCSharp.md)
+- [MVC C#](https://github.com/lucasmenke/notes/blob/main/dictionary/MVCCSharp.md)
 
 ### R
 
- - [Razor components](https://github.com/lucasmenke/notes/blob/main/dictionary/RazorComponents.md)
+- [Razor components](https://github.com/lucasmenke/notes/blob/main/dictionary/RazorComponents.md)
 
 ### S
 
- - [Server Side](https://github.com/lucasmenke/notes/blob/main/dictionary/ServerSide.md)
+- [Server Side](https://github.com/lucasmenke/notes/blob/main/dictionary/ServerSide.md)
 
- - [Single Page Appliation](https://github.com/lucasmenke/notes/blob/main/dictionary/SinglePageApplication.md)
+- [Single Page Appliation](https://github.com/lucasmenke/notes/blob/main/dictionary/SinglePageApplication.md)
 
 - [Singleton](https://github.com/lucasmenke/notes/blob/main/dictionary/Singleton.md)
 
