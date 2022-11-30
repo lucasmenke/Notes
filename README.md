@@ -1,1 +1,5 @@
-"# notes" 
+-  I use GitHub / Obsidian as my notebook
+-  in the "Table of Contents" file you have a overview of all topics
+-  in the project folder I have notes for some of my projects
+-  feel free to browse my notes :)
+-  I would appreciate it if you correct me when you see some wrong information
