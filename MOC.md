@@ -2,46 +2,46 @@
 
 ### B
 
-- [Blazor Client](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorClient.md)
+- [Blazor Client](https://github.com/lucasmenke/notes/blob/main/content/BlazorClient.md)
 
-- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorServer.md)
+- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/content/BlazorServer.md)
 
-- [Blazor Web Assembly](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorWebAssembly.md)
+- [Blazor Web Assembly](https://github.com/lucasmenke/notes/blob/main/content/BlazorWebAssembly.md)
 
 ### C
 
-- [Client Side](https://github.com/lucasmenke/notes/blob/main/dictionary/ClientSide.md)
+- [Client Side](https://github.com/lucasmenke/notes/blob/main/content/ClientSide.md)
 
 ### D
 
-- [Database Transaction](https://github.com/lucasmenke/notes/blob/main/dictionary/DeatabaseTransaction.md)
+- [Database Transaction](https://github.com/lucasmenke/notes/blob/main/content/DeatabaseTransaction.md)
 
-- [Dependency Injection](https://github.com/lucasmenke/notes/blob/main/dictionary/DependencyInjection.md)
+- [Dependency Injection](https://github.com/lucasmenke/notes/blob/main/content/DependencyInjection.md)
 
 ### G
 
-- [Global Using Directives](https://github.com/lucasmenke/notes/blob/main/dictionary/GlobalUsingDirective.md)
+- [Global Using Directives](https://github.com/lucasmenke/notes/blob/main/content/GlobalUsingDirective.md)
 
 ### H
 
-- [HashSet](https://github.com/lucasmenke/notes/blob/main/dictionary/HashSet.md)
+- [HashSet](https://github.com/lucasmenke/notes/blob/main/content/HashSet.md)
 
 ### M
 
-- [MVC C#](https://github.com/lucasmenke/notes/blob/main/dictionary/MVCCSharp.md)
+- [MVC C#](https://github.com/lucasmenke/notes/blob/main/content/MVCCSharp.md)
 
 ### R
 
-- [Razor components](https://github.com/lucasmenke/notes/blob/main/dictionary/RazorComponents.md)
+- [Razor components](https://github.com/lucasmenke/notes/blob/main/content/RazorComponents.md)
 
 ### S
 
-- [Server Side](https://github.com/lucasmenke/notes/blob/main/dictionary/ServerSide.md)
+- [Server Side](https://github.com/lucasmenke/notes/blob/main/content/ServerSide.md)
 
-- [Single Page Appliation](https://github.com/lucasmenke/notes/blob/main/dictionary/SinglePageApplication.md)
+- [Single Page Appliation](https://github.com/lucasmenke/notes/blob/main/content/SinglePageApplication.md)
 
-- [Singleton](https://github.com/lucasmenke/notes/blob/main/dictionary/Singleton.md)
+- [Singleton](https://github.com/lucasmenke/notes/blob/main/content/Singleton.md)
 
 ### W
 
-- [Web Assembly (WASM)](https://github.com/lucasmenke/notes/blob/main/dictionary/WebAssembly.md)
+- [Web Assembly (WASM)](https://github.com/lucasmenke/notes/blob/main/content/WebAssembly.md)
