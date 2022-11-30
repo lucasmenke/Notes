@@ -1,7 +1,5 @@
 # README
 
-***
-
 - I use GitHub / Obsidian as my notebook
 - in the MOC (Map of Content) file you can find a overview of all topics
 - in the content folder I have notes for programming related topics

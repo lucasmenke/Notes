@@ -1,7 +1,5 @@
 # Map of Content
 
-***
-
 ### B
 
 - [Blazor Client](https://github.com/lucasmenke/notes/blob/main/dictionary/BlazorClient.md)
