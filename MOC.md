@@ -14,7 +14,7 @@
 
 ### D
 
-- [Database Transaction](https://github.com/lucasmenke/notes/blob/main/content/DeatabaseTransaction.md)
+- [Database Transaction](https://github.com/lucasmenke/notes/blob/main/content/DatabaseTransaction.md)
 
 - [Dependency Injection](https://github.com/lucasmenke/notes/blob/main/content/DependencyInjection.md)
 
