@@ -1,4 +1,5 @@
-## Singleton
+# Singleton
+
 - class which only allows a single instance of itself to be created
 - Mostly, singletons don't allow any parameters to be specified when creating the instance 
 	- otherwise a second request for an instance but with a different parameter could be problematic

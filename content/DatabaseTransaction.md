@@ -1,7 +1,7 @@
-## Database Transaction
+# Database Transaction
 
  - a transaction is a unit of work that you can treat as "a whole" 
-	 - it happens either in full or not at all
+	- it happens either in full or not at all
 
 **Example: (by sharptooth https://stackoverflow.com/a/974611/16764349)**
 
