@@ -76,18 +76,18 @@ Following components will be used:
 
 <ins>Two projects under one solution</ins>
 1. Blazor Server App for the Frontend
-	 - Dependency Injections moved out from the Program.cs to a seperate class (RegisterServices.cs)
+	- Dependency Injections moved out from the Program.cs to a seperate class (RegisterServices.cs)
 2. Class Library for the Backend 
 	- Data Access classes
 	- Backend model classes
 
  <ins>Relathionship of the projects</ins>
- - one-sided relationship between the projects
-	 - Blazor Server App knows the Class Library but the Class Library doesn't know the Blazor Server App
-	 - Blazor Server App relies on Class Library because Class Library has to be build before the Blazor Server App to get the .dll to use it as a dependency in the Blazor Server App
-	 - don't create circular / two-sided dependency
+- one-sided relationship between the projects
+	- Blazor Server App knows the Class Library but the Class Library doesn't know the Blazor Server App
+	- Blazor Server App relies on Class Library because Class Library has to be build before the Blazor Server App to get the .dll to use it as a dependency in the Blazor Server App
+	- don't create circular / two-sided dependency
 		 - couldn't build anything because both projects would rely on each other
 
 <ins>Usings</ins>
- - Both have a GlobalUsings.cs in the root
-	 - [global using directive](https://github.com/dotnet/csharplang/blob/main/proposals/csharp-10.0/GlobalUsingDirective.md) are usings that the compiler uses for the whole project
+- Both have a GlobalUsings.cs in the root
+	- [global using directive](https://github.com/dotnet/csharplang/blob/main/proposals/csharp-10.0/GlobalUsingDirective.md) are usings that the compiler uses for the whole project
