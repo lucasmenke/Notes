@@ -2,8 +2,10 @@
 
 The "Suggestion Web App" is a server-sided webpage where users can create accounts to post and vote on suggestions. The website allows the administator of the page to review each suggestions befor it will be published on the side.
 
+Finished date of project: 
+
 ***
-## Suggestion Website
+## Tech Stack
 
 Following components will be used:
  - Blazor Server (.NET 6)
@@ -12,7 +14,7 @@ Following components will be used:
 
 ***
 
-## 1 Lesson: Planning process
+## Planning process
 
 > First, we have to have a clear picture of our endgoal 
  
