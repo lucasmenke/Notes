@@ -28,7 +28,7 @@
 
 ### M
 
-- [MVC C#](https://github.com/lucasmenke/notes/blob/main/content/MVCCSharp.md)
+- [MVC C#](https://github.com/lucasmenke/notes/blob/main/content/MVC.md)
 
 ### R
 
