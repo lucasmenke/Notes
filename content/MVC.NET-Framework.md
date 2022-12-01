@@ -1,6 +1,5 @@
 # C# MVC .NET Framework
 
-
 ## Folder Structure
 
 - App_Data → irrelevant
@@ -36,7 +35,7 @@
 
 ### Multiple Routes
 
-```
+``` C#
     // added second route bevor "Default" route because each route is 
     // evaluated in sequence
 	
@@ -65,7 +64,7 @@
 ![c#-mvc](https://i.imgur.com/RXLgqxg.png)
 
 ### Route Constraints
-```
+``` C#
     routes.MapRoute( 
 	    name: "Student", 
 	    url: "student/{id}/{name}/{standardId}", 
@@ -78,7 +77,7 @@
 ### Register Routes
 
  - after configuring routes, they need to be registered in Global.asax Application_Start() event
-```
+``` C#
     public class MvcApplication : System.Web.HttpApplication 
     { 
 	    protected void Application_Start() 
@@ -101,7 +100,7 @@
 
  - right click on folder Controllers > Add > Controller
  - now a template can be selected
-```
+``` C#
 namespace MVC_BasicTutorials.Controllers 
 { 
 	// every controller derives from Controller class -> contains helper methodes
@@ -113,8 +112,7 @@ namespace MVC_BasicTutorials.Controllers
 		} 
 	} 
 }
-```
-```
+
 namespace MVC_BasicTutorials.Controllers 
 { 
 	public class StudentController : Controller 
@@ -158,8 +156,9 @@ namespace MVC_BasicTutorials.Controllers
 - binding is not case sensitive
  
 ![csharp-mvc](https://i.imgur.com/hkqbAhw.png)
-```
-// multiple parameters possible → http://localhost/Student/Edit?id=1&name=John public ActionResult Edit(int id, string name) 
+``` C#
+// multiple parameters possible → http://localhost/Student/Edit?id=1&name=John 
+public ActionResult Edit(int id, string name) 
 { 
 	return View(); 
 }
@@ -174,7 +173,7 @@ namespace MVC_BasicTutorials.Controllers
 ### ActionName
  
 - allows to rename the action methode name
- ```
+ ``` C#
  // action methode name changes from "GetById" to "Find" -> http://localhost/student/find/1 
  [ActionName("Find")] 
  public ActionResult GetById(int id) 
@@ -187,7 +186,7 @@ namespace MVC_BasicTutorials.Controllers
 
 - restrict access to Action Methode, which are by default public → make it private without writing “private”
 - bad design → in general private methodes should be in the model
-```
+``` C#
 // not accesable 
 NonAction] 
 public Student GetStudent(int id) 
@@ -201,7 +200,7 @@ public Student GetStudent(int id)
 - selector that handels different types of HTTP requests
 - multiple ActionVerbs can be applied to an action methode
 ![csharp-mvc](https://i.imgur.com/eyVxbfk.png)
-```
+``` C#
 // handles GET requests by default 
 public ActionResult Index() 
 { 
@@ -233,7 +232,7 @@ public ActionResult GetAndPostAction()
 ### Adding Model Class
 
 - right click on Model folder > Add > Class
-```
+``` C#
 // properties must be puplic 
 public class Student 
 { 
