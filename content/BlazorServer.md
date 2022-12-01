@@ -61,3 +61,4 @@ public static class RegisterServices
 	1. cut out the dependency injection
 	2. add `using BlazorProjectname;`
 	3. add `builder.ConfigureServices();` under `var builder = WebApplication.CreateBuilder(args);`
+	4. clean Solution
