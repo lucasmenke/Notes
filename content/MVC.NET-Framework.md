@@ -1,13 +1,5 @@
 # C# MVC .NET Framework
 
-## Architecture
-
-- Model (DATA) → represents shape of data, class is used to describe model, store datra retrieved from the database
-- View (UI) → displays model data and allows to modifiy them, HTML & CSS & Razor syntay (C# Code in Webpage)
-- Controller → handles user request (GET, POST…) & returns approprate view as result
-![csharp-mvc](https://i.imgur.com/uoqLiYU.png)
-
-***
 
 ## Folder Structure
 
