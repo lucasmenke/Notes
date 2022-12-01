@@ -14,4 +14,4 @@ API´s help to communicate with a database without knowing secret credentials. T
 
 # MOC
 
-[ASP .NET Core Web API](https://github.com/lucasmenke/notes/blob/main/content/API.NET-Core.md)
+[ASP .NET Core Web API](https://github.com/lucasmenke/notes/blob/work/content/API.NET-Core.md)

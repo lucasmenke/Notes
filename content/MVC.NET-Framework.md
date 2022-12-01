@@ -36,9 +36,7 @@
 ### Multiple Routes
 
 ``` C#
-    // added second route bevor "Default" route because each route is 
-    // evaluated in sequence
-	
+    // added second route bevor "Default" route because each route is evaluated in sequence	
     public class RouteConfig 
     { 
 	    public static void RegisterRoutes(RouteCollection routes) 
@@ -188,7 +186,7 @@ public ActionResult Edit(int id, string name)
 - bad design → in general private methodes should be in the model
 ``` C#
 // not accesable 
-NonAction] 
+[NonAction] 
 public Student GetStudent(int id) 
 { 
 	return studentList.Where(s => s.StudentId == id).FirstOrDefault(); 

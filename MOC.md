@@ -3,7 +3,7 @@
 
 ### A
 
-- [API](https://github.com/lucasmenke/notes/blob/main/content/APImd)
+- [API](https://github.com/lucasmenke/notes/blob/main/content/API.md)
 
 ### B
 
