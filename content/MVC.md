@@ -18,6 +18,6 @@ They only talk vie the Controller
 
 ## MOC
 
-[MVC .NET Framework](https://github.com/lucasmenke/notes/blob/main/content/MVC.Net-Framework.md)
+[MVC .NET Framework](https://github.com/lucasmenke/notes/blob/work/content/MVC.NET-Framework.md)
 
 
