@@ -1,19 +1,17 @@
 # ASP .NET Core Web API Minimal
 
-## Swagger
+## Create Project
 
-- visualizes the API
-	- displays all the endpoints
-	- execute requests to the endpoints
-	- displays recived data
+ASP.NET Core Web API > Uncheck Box: Use controllers
 
 ***
 
-## Project structure
+## Project Structure
 
-Their is no Controller folder like in a "normal" ASP .NET Core Web API. The endpoints are located in the Programm.cs
+Their is no Controller folder like in a "normal" ASP .NET Core Web API. This allows a minimal and clear project structure for small API´s.
 
 <ins>Programm.cs</ins>
+- endpoints are located here
 ``` C#
 // creates the application
 var builder = WebApplication.CreateBuilder(args);
@@ -40,7 +38,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // creates an endpoint (get) that returns Hello World
-// can also execute a function
+// can also execute a methode -> don´t put it in this class
 app.MapGet("api/helloWorld", () => "Hello World");
 
 // starts the app

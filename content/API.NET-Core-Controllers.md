@@ -1,12 +1,9 @@
 
 # ASP .NET Core Web API with controller
 
-## Swagger
+# Create Project
 
-- visualizes the API
-	- displays all the endpoints
-	- execute requests to the endpoints
-	- displays recived data
+ASP.NET Core Web API > Check Box: Use controllers
 
 ***
 
@@ -66,6 +63,7 @@ namespace EngbersGewinnspieleApi.Controllers
     public class UsersController : ControllerBase
     {
         // GET: api/Users
+        // just have action specific code in the controller -> outsource the logic / data access in f.e. a class library
         [HttpGet]
         public IEnumerable<string> Get()
         {
