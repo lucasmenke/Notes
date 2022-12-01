@@ -1,12 +1,9 @@
 
 # ASP .NET Core Web API with controller
 
-## Swagger
+# Create Project
 
-- visualizes the API
-	- displays all the endpoints
-	- execute requests to the endpoints
-	- displays recived data
+ASP.NET Core Web API > Check Box: Use controllers
 
 ***
 
@@ -15,7 +12,7 @@
 <ins>Program.cs</ins>
 - similar to other ASP.NET-Core project types
 ``` C#
-// creating the application
+// creates the application
 var builder = WebApplication.CreateBuilder(args);
 
 // dependency injection - adds the controllers from Controller folder
@@ -24,7 +21,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// building the application
+// builds the application
 var app = builder.Build();
 
 // if we are in the development environment swagger will be activated
@@ -38,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// redirect from http to https
+// redirects from http to https
 app.UseHttpsRedirection();
 
 // ability to use authorization
@@ -66,6 +63,7 @@ namespace EngbersGewinnspieleApi.Controllers
     public class UsersController : ControllerBase
     {
         // GET: api/Users
+        // just have action specific code in the controller -> outsource the logic / data access in f.e. a class library
         [HttpGet]
         public IEnumerable<string> Get()
         {
