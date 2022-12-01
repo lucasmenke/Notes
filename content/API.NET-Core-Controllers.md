@@ -15,7 +15,7 @@
 <ins>Program.cs</ins>
 - similar to other ASP.NET-Core project types
 ``` C#
-// creating the application
+// creates the application
 var builder = WebApplication.CreateBuilder(args);
 
 // dependency injection - adds the controllers from Controller folder
@@ -24,7 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// building the application
+// builds the application
 var app = builder.Build();
 
 // if we are in the development environment swagger will be activated
@@ -38,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// redirect from http to https
+// redirects from http to https
 app.UseHttpsRedirection();
 
 // ability to use authorization
