@@ -32,8 +32,10 @@
 2. add folder "Models" -> holds UI models
 
 <ins>Now the class library can be set up</ins>
-1. add folder "DataAccess" -> talks to DB
-2. add folder "Models" -> contains the backend models
+1. add new Project "Class Library" 
+2. delete "Class1.cs"
+3. add folder "DataAccess" -> talks to DB
+4. add folder "Models" -> contains the backend models
 
 <ins>Setting up Dependencies</ins>
 It has to be a one-sided relationship between the projects. A two-sided relationship create a closed circul of dependencies and now project could be build.
@@ -41,7 +43,7 @@ It has to be a one-sided relationship between the projects. A two-sided relation
 
 <ins>Set up Global Usings</ins>
 1. create a new class in the projects where you want to have global using
-2. add usings	`global using MongoDB.Bson;`
+2. f.e. add usings	`global using MongoDB.Bson;`
 
 <ins>Outsource dependency injection to a seperate class</ins>
 1. add new class to the Blazor Server Project called "RegisterServices"
@@ -59,9 +61,10 @@ public static class RegisterServices
 ```
 3. change the Program.cs
 	1. cut out the dependency injection
-	2. add `using BlazorProjectname;`
-	3. add `builder.ConfigureServices();` under `var builder = WebApplication.CreateBuilder(args);`
-	4. clean Solution
+	2. add `using BlazorProjectname;
+	4. add `builder.ConfigureServices();` under `var builder = WebApplication.CreateBuilder(args);`
+	5. delete obsolete dependency injections
+	6. clean Solution
 
 ***
 
@@ -75,3 +78,17 @@ After preparing my new solution I like to start the coding process by adding mod
 3. make class public
 4. add properties
 5. optional: remove `<Nullable>enable</Nullable>` in the project settings of Class Library (double-click on project in the Solution Explorer)
+
+``` C#
+namespace ProjectName.Models;
+
+public class TransactionModel
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+    public string FromUserId { get; set; }
+    public string ToUserId { get; set; }
+    public double Amount { get; set; }
+}
+```

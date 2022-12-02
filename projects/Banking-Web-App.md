@@ -1,6 +1,6 @@
 # Banking Web App
 
-The "Banking Web App" allows to create accounts, add deposits and transfer money to other bank accounts.
+The "Banking Web App" allows to create accounts, add  deposits, withdraw money and transfer money to other bank accounts.
 
 Finished date of project: 
 
@@ -27,7 +27,9 @@ Finished date of project:
 ## Data Structure
 
 - User
-	- Id
+	- Id 
+		- BsonId -> unique id property of class object
+		- BsonType.ObjectId ->  automatically assigns value to Id property (leave it blank when creating object)
 	- Surname
 	- Forname
 	- Bank Account Number
@@ -36,6 +38,33 @@ Finished date of project:
 
 - Transaction
 	- Id
-	- FromUser (User Id)
-	- ToUser (User Id)
+		- BsonId
+		- BsonRepresentation(BsonType.ObjectId)
+	- FromUserId
+	- ToUserId
 	- Amount
+
+***
+
+## Project Structure
+
+1. Blazor Server UI
+	1. has a one sided dependency with the Class Library -> project needs Class Library to build
+2. Class Library Project
+
+<ins>More in depth explanation & overwiev here</ins>
+- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/content/BlazorServer.md)
+
+***
+
+## Extensions
+
+<ins>Blazor Server project</ins>
+- Microsoft.Identity.Web
+- Microsoft.Identity.Web.UI
+
+<ins>Class Library</ins>
+- Microsoft.Extensions.Caching.Memory
+- Microsoft.Extensions.Configuration.Abstract
+- MongoDB.Driver
+
