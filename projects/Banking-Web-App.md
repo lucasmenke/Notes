@@ -43,6 +43,7 @@ Finished date of project:
 	- FromUserId
 	- ToUserId
 	- Amount
+	- DateCreated
 
 ***
 
