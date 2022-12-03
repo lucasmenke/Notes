@@ -7,6 +7,7 @@
 - in the [MOC](https://github.com/lucasmenke/notes/blob/work/MOC.md) file you can find an overview of all topics
 - in the [Tutorials](https://github.com/lucasmenke/notes/blob/work/Tutorials.md) folder I have sample projects
 	- these show how to set up a working app - focusing on the backend -
+- in the [Projects]() folder I have real project that are / could go live
 - in the Content folder I have notes for programming related topics
 
 <ins>Have fun</ins>

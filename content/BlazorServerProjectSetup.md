@@ -113,13 +113,17 @@ public class TransactionModel
 
 ## Data Access
 
-This class takes care of the connection to the database. 
-It is a consideration worthy to create a singleton out of this class. The singleton creates one connection for all users to the database and doesn´t close it while the app is running. This saves time and ressources that would be needed when the connection always closes and opens over and over again.
-If every user should get their own db connection the class can be changed from a singleton to a scoped class
+This folder contains classes that take care of the connection to the database & provides classes to talk to the database.
 
-1. Create a class in the Class Library folder "DataAccess" called "DbConnection.cs"
+1. create a class in the Class Library folder "DataAccess" called "DbConnection.cs"
+2. create a class for each Model that handles CRUD (create, read, update, delete) requests
+3. extract Interfaces out of each class to easily reference them througout the Solution
 
-<ins>For an in depth view how to create a singleton MongoDB data access refere to this sample project</ins>
+<ins>For an in depth view how to create classes for MongoDB data access refere to this sample project</ins>
 - [Banking Web App](https://github.com/lucasmenke/notes/blob/main/Tutorials/Banking-Web-App.md)
 
 ***
+
+## Register Services
+
+Here you want to add the DataAccess Interfaces to the dependency injection
