@@ -325,7 +325,10 @@ public class MongoTransactionData : ITransactionData
 
 ## Register Services
 
-```
+When injecting the Interfaces as dependencies, we have to decide between Transient, Scoped and Singleton. Here are more information about [Dependeny Injection Lifetime](https://github.com/lucasmenke/notes/blob/main/content/DependencyInjection.md).
+
+1. Register Services as Singleton, Scoped or Transient
+``` C#
 public static class RegisterServices
 {
     public static void ConfigureServices(this WebApplicationBuilder builder)
