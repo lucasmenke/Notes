@@ -216,9 +216,24 @@ public class MongoUserData : IUserData
     }
 
     // create
-    public async Task CreateUser(UserModel user)
+    // return feedback if the inerstion was succesful
+    public async Task<bool> CreateUser(UserModel user)
     {
-        await _users.InsertOneAsync(user);
+        try
+        {
+            var index = new BsonDocument
+            {
+                {"Email", 1}
+            };
+            var indexModel = new CreateIndexModel<UserModel>(index, new CreateIndexOptions { Unique = true });
+            await _users.Indexes.CreateOneAsync(indexModel);
+            await _users.InsertOneAsync(user);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
     }
 
     // read
@@ -228,17 +243,21 @@ public class MongoUserData : IUserData
         return results.ToList();
     }
 
-    public async Task<UserModel> GetUser(string id)
+    public async Task<UserModel> GetUserById(string id)
     {
         var result = await _users.FindAsync(u => u.Id == id);
         return result.FirstOrDefault();
     }
 
+    public async Task<UserModel> GetUserByEmail(string mail)
+    {
+        var result = await _users.FindAsync(u => u.Email == mail);
+        return result.FirstOrDefault();
+    }
+
     public async Task<int> GetNewBankAccountNumber()
     {
-        // asks the cache for the cached data with the key "BankAccountNumber"
         var output = _cache.Get<int>(CacheName);
-        // if their is no cached data then get it from the db
         if (output == 0)
         {
             UserModel user = await _users
@@ -256,7 +275,6 @@ public class MongoUserData : IUserData
                 output = user.BankAccountNumber + 1;
             }
 
-			// sets & keeps the output in the cache for 1 day
             _cache.Set(CacheName, output, TimeSpan.FromDays(90));
 
             return output;
@@ -267,7 +285,6 @@ public class MongoUserData : IUserData
         }
     }
 
-
     // update
     public Task UpdateUser(UserModel user)
     {
@@ -277,6 +294,7 @@ public class MongoUserData : IUserData
     }
 
     // delete -> users can't be deleted they can just be set to unactive
+}
 ```
 
 3. create Interface out of the class
@@ -472,7 +490,19 @@ public class CreateUserModel
     <div>
         <button type="submit">Create User</button>
     </div>
+    <div>
+        @if (userCreatedSuccess)
+        {
+            <div>User succesfully created</div>
+        }
+        @if (userCreatedError)
+        {
+            <div>User could not be inserted</div>
+            <div>@errorMsg</div>
+        }
+    </div>
 </EditForm>
+
 
 <div>
     <button @onclick="ClosePage">Close Page</button>
@@ -484,6 +514,9 @@ public class CreateUserModel
 ``` C#
 @code {
     private CreateUserModel user = new();
+    bool userCreatedSuccess;
+    bool userCreatedError;
+    string errorMsg = string.Empty;
 
     private void ClosePage()
     {
@@ -500,7 +533,18 @@ public class CreateUserModel
                 BankAccountNumber = await userData.GetNewBankAccountNumber()
             };
 
-        await userData.CreateUser(u);
+        bool userCreated = await userData.CreateUser(u);
+        userCreatedSuccess = userCreated == true ? true : false;
+        userCreatedError = userCreated == false ? true : false;
+
+        if (userCreatedError)
+        {
+            var userExist = userData.GetUserByEmail(user.Email);
+            if (userExist != null)
+            {
+                errorMsg = "E-Mail is already in use.";
+            }
+        }
     }
 }
 ```
