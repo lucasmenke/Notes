@@ -216,8 +216,7 @@ public class MongoUserData : IUserData
     }
 
     // create
-    // return feedback if the inerstion was succesful
-    public async Task<bool> CreateUser(UserModel user)
+    public async Task CreateUser(UserModel user)
     {
         try
         {
@@ -228,11 +227,10 @@ public class MongoUserData : IUserData
             var indexModel = new CreateIndexModel<UserModel>(index, new CreateIndexOptions { Unique = true });
             await _users.Indexes.CreateOneAsync(indexModel);
             await _users.InsertOneAsync(user);
-            return true;
         }
         catch (Exception)
         {
-            return false;
+            return;
         }
     }
 
@@ -252,6 +250,12 @@ public class MongoUserData : IUserData
     public async Task<UserModel> GetUserByEmail(string mail)
     {
         var result = await _users.FindAsync(u => u.Email == mail);
+        return result.FirstOrDefault();
+    }
+
+    public async Task<UserModel> GetUserByBankAccountNumber(int bankAccountNumber)
+    {
+        var result = await _users.FindAsync(u => u.BankAccountNumber == bankAccountNumber);
         return result.FirstOrDefault();
     }
 
@@ -294,7 +298,6 @@ public class MongoUserData : IUserData
     }
 
     // delete -> users can't be deleted they can just be set to unactive
-}
 ```
 
 3. create Interface out of the class
@@ -327,7 +330,6 @@ public class MongoTransactionData : ITransactionData
     private readonly IUserData _userData;
     private readonly IMongoCollection<TransactionModel> _transactions;
 
-    // parameters are passed from the dependency injection in the RegisterServices.cs
     public MongoTransactionData(IDbConnection db, IUserData userData)
     {
         _db = db;
@@ -336,22 +338,19 @@ public class MongoTransactionData : ITransactionData
     }
 
     // create
-    public async Task CreateTransaction(TransactionModel transaction)
+    public async Task CreateMultiTransaction(TransactionModel transaction)
     {
         var client = _db.Client;
 
         using var session = await client.StartSessionAsync();
 
-        // transaction ensures that when we write to different collection the write completly succeeds or completly fails
         session.StartTransaction();
 
         try
         {
-            // get both parties of the transaction
-            var fromUser = await _userData.GetUser(transaction.FromUserId);
-            var toUser = await _userData.GetUser(transaction.ToUserId);
+            var fromUser = await _userData.GetUserById(transaction.FromUserId);
+            var toUser = await _userData.GetUserById(transaction.ToUserId);
 
-            // update their balances
             fromUser.Balance -= transaction.Amount;
             toUser.Balance += transaction.Amount;
 
@@ -360,14 +359,39 @@ public class MongoTransactionData : ITransactionData
 
             await _transactions.InsertOneAsync(transaction);
 
-            // commit transaction
             await session.CommitTransactionAsync();
         }
         catch (Exception)
         {
-            // in case of an exception the session will be aborted -> no db data changed
             await session.AbortTransactionAsync();
-            throw;
+            return;
+        }
+    }
+
+    public async Task CreateSingleTransaction(TransactionModel transaction)
+    {
+        var client = _db.Client;
+
+        using var session = await client.StartSessionAsync();
+
+        session.StartTransaction();
+
+        try
+        {
+            var fromUser = await _userData.GetUserById(transaction.FromUserId);
+
+            fromUser.Balance += transaction.Amount;
+
+            await _userData.UpdateUser(fromUser);
+
+            await _transactions.InsertOneAsync(transaction);
+
+            await session.CommitTransactionAsync();
+        }
+        catch (Exception)
+        {
+            await session.AbortTransactionAsync();
+            return;
         }
     }
 
@@ -438,7 +462,7 @@ public static class RegisterServices
 
 ## Create Sample Data
 
-This pages allows us to add some sample data to test our database access methodes and insert our first dummy data.
+This pages allows us to add some sample data to test our database access methodes and insert our first dummy data. Don't put business logic in here. This page is only for testing the data access.
 
 1. create UI Models under Blazor Server Project/Models
 	1. allows a cleaner speration from Fontend Data and Backend Data
@@ -468,9 +492,10 @@ public class CreateUserModel
 @page "/SampleData"
 @using BankingAppUI.Models;
 @inject IUserData userData
+@inject ITransactionData transactionData
 @inject NavigationManager navManager
 
-<h3>SampleData</h3>
+<h3>Sample Data</h3>
 
 <EditForm Model="user" OnValidSubmit="CreateUser">
     <DataAnnotationsValidator />
@@ -480,7 +505,7 @@ public class CreateUserModel
         <InputText id="forname" @bind-Value="user.Forname"></InputText>
     </div>
     <div>
-        <label for="surname">surname</label>
+        <label for="surname">Surname</label>
         <InputText id="surname" @bind-Value="user.Surname"></InputText>
     </div>
     <div>
@@ -490,19 +515,7 @@ public class CreateUserModel
     <div>
         <button type="submit">Create User</button>
     </div>
-    <div>
-        @if (userCreatedSuccess)
-        {
-            <div>User succesfully created</div>
-        }
-        @if (userCreatedError)
-        {
-            <div>User could not be inserted</div>
-            <div>@errorMsg</div>
-        }
-    </div>
 </EditForm>
-
 
 <div>
     <button @onclick="ClosePage">Close Page</button>
@@ -514,9 +527,8 @@ public class CreateUserModel
 ``` C#
 @code {
     private CreateUserModel user = new();
-    bool userCreatedSuccess;
-    bool userCreatedError;
-    string errorMsg = string.Empty;
+    private CreateDeposit deposit = new();
+    string createUserReturnMsg = string.Empty;
 
     private void ClosePage()
     {
@@ -533,18 +545,7 @@ public class CreateUserModel
                 BankAccountNumber = await userData.GetNewBankAccountNumber()
             };
 
-        bool userCreated = await userData.CreateUser(u);
-        userCreatedSuccess = userCreated == true ? true : false;
-        userCreatedError = userCreated == false ? true : false;
-
-        if (userCreatedError)
-        {
-            var userExist = userData.GetUserByEmail(user.Email);
-            if (userExist != null)
-            {
-                errorMsg = "E-Mail is already in use.";
-            }
-        }
+        await userData.CreateUser(u);
     }
 }
 ```
