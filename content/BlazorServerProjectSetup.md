@@ -113,3 +113,17 @@ public class TransactionModel
 
 ## Data Access
 
+This folder contains classes that take care of the connection to the database & provides classes to talk to the database.
+
+1. create a class in the Class Library folder "DataAccess" called "DbConnection.cs"
+2. create a class for each Model that handles CRUD (create, read, update, delete) requests
+3. extract Interfaces out of each class to easily reference them througout the Solution
+
+<ins>For an in depth view how to create classes for MongoDB data access refere to this sample project</ins>
+- [Banking Web App](https://github.com/lucasmenke/notes/blob/main/Tutorials/Banking-Web-App.md)
+
+***
+
+## Register Services
+
+Here you want to add the DataAccess Interfaces to the dependency injection
