@@ -24,29 +24,6 @@ Finished date of project:
 
 ***
 
-## Data Structure
-
-- User
-	- Id 
-		- BsonId -> unique id property of class object
-		- BsonType.ObjectId ->  automatically assigns value to Id property (leave it blank when creating object)
-	- Surname
-	- Forname
-	- Bank Account Number
-	- Balance
-	- E-Mail
-
-- Transaction
-	- Id
-		- BsonId
-		- BsonRepresentation(BsonType.ObjectId)
-	- FromUserId
-	- ToUserId
-	- Amount
-	- DateCreated
-
-***
-
 ## Project Structure
 
 1. Blazor Server UI > has a one sided dependency with the Class Library -> project needs Class Library to build
@@ -70,8 +47,71 @@ Finished date of project:
 - Microsoft.Identity.Web.UI
 
 <ins>Class Library</ins>
+- Microsoft.Extensions.Caching.Memory
 - Microsoft.Extensions.Configuration.Abstract
 - MongoDB.Driver
+
+***
+
+## Data Structure
+
+- User
+	- Id 
+		- BsonId -> unique id property of class object
+		- BsonType.ObjectId ->  automatically assigns value to Id property (leave it blank when creating object)
+	- Surname
+	- Forname
+	- E-Mail
+	- Bank Account Number
+	- Balance
+	- DateCreated
+	- ActiveAccount
+
+- Transaction
+	- Id
+		- BsonId
+		- BsonRepresentation(BsonType.ObjectId)
+	- FromUserId
+	- ToUserId
+	- Amount
+	- DateCreated
+
+***
+
+## Models
+
+1. UserModel.cs
+
+``` C#
+public class UserModel
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+    public string Surname { get; set; }
+    public string Forname { get; set; }
+    public string Email { get; set; }
+    public int BankAccountNumber { get; set; }
+    public double Balance { get; set; } = 0;
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+    public bool ActiveAccount { get; set; } = true;
+}
+```
+
+2. TransactionModel.cs
+
+``` C#
+public class TransactionModel
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+    public string FromUserId { get; set; }
+    public string ToUserId { get; set; }
+    public double Amount { get; set; }
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+}
+```
 
 ***
 
@@ -150,11 +190,13 @@ This class communicates with the database (CRUD - create, read, update, delete).
 public class MongoUserData
 {
     private readonly IMongoCollection<UserModel> _users;
+    private readonly IMemoryCache _cache;
+    private const string CacheName = "BankAccountNumber";
 
-    // get the UserCollection from the IDbConnection parameter
-    public MongoUserData(IDbConnection db)
+    public MongoUserData(IDbConnection db, IMemoryCache cache)
     {
         _users = db.UserCollection;
+        _cache = cache;
     }
 }
 ```
@@ -164,16 +206,19 @@ public class MongoUserData
 public class MongoUserData : IUserData
 {
     private readonly IMongoCollection<UserModel> _users;
+    private readonly IMemoryCache _cache;
+    private const string CacheName = "BankAccountNumber";
 
-    public MongoUserData(IDbConnection db)
+    public MongoUserData(IDbConnection db, IMemoryCache cache)
     {
         _users = db.UserCollection;
+        _cache = cache;
     }
 
     // create
-    public Task CreateUser(UserModel user)
+    public async Task CreateUser(UserModel user)
     {
-        return _users.InsertOneAsync(user);
+        await _users.InsertOneAsync(user);
     }
 
     // read
@@ -189,6 +234,39 @@ public class MongoUserData : IUserData
         return result.FirstOrDefault();
     }
 
+    public async Task<int> GetNewBankAccountNumber()
+    {
+        // asks the cache for the cached data with the key "BankAccountNumber"
+        var output = _cache.Get<int>(CacheName);
+        // if their is no cached data then get it from the db
+        if (output == 0)
+        {
+            UserModel user = await _users
+                .Find(_ => true)
+                .SortByDescending(u => u.DateCreated)
+                .Limit(1)
+                .FirstOrDefaultAsync();
+
+            if (user is null)
+            {
+                output = 1000000;
+            }
+            else
+            {
+                output = user.BankAccountNumber + 1;
+            }
+
+			// sets & keeps the output in the cache for 1 day
+            _cache.Set(CacheName, output, TimeSpan.FromDays(90));
+
+            return output;
+        }
+        else
+        {
+            return output + 1;
+        }
+    }
+
 
     // update
     public Task UpdateUser(UserModel user)
@@ -198,14 +276,7 @@ public class MongoUserData : IUserData
         return _users.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = false });
     }
 
-
-    // delete
-    public Task DeleteUser(UserModel user)
-    {
-        var filter = Builders<UserModel>.Filter.Eq("Id", user.Id);
-        return _users.DeleteOneAsync(filter);
-    }
-}
+    // delete -> users can't be deleted they can just be set to unactive
 ```
 
 3. create Interface out of the class
@@ -344,6 +415,97 @@ public static class RegisterServices
     }
 }
 ```
+
+***
+
+## Create Sample Data
+
+This pages allows us to add some sample data to test our database access methodes and insert our first dummy data.
+
+1. create UI Models under Blazor Server Project/Models
+	1. allows a cleaner speration from Fontend Data and Backend Data
+		1. f.e. wo don´t want the user to choose a bank account number so we don´t include it in the UI Model
+		2. we can add Data Annotations to UI Model
+``` C#
+public class CreateUserModel
+{
+    [Required]
+    [MaxLength(50, ErrorMessage = "Surname is too long.")]
+    public string Surname { get; set; }
+
+    [Required]
+    [MaxLength(50, ErrorMessage = "Forname is too long.")]
+    public string Forname { get; set; }
+
+    [Required]
+    [EmailAddress]
+    [DisplayName("E-Mail")]
+    public string Email { get; set; }
+}
+```
+
+2. create razor page for sample data
+3. create input form
+``` C#
+@page "/SampleData"
+@using BankingAppUI.Models;
+@inject IUserData userData
+@inject NavigationManager navManager
+
+<h3>SampleData</h3>
+
+<EditForm Model="user" OnValidSubmit="CreateUser">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="forname">Forname</label>
+        <InputText id="forname" @bind-Value="user.Forname"></InputText>
+    </div>
+    <div>
+        <label for="surname">surname</label>
+        <InputText id="surname" @bind-Value="user.Surname"></InputText>
+    </div>
+    <div>
+        <label for="email">E-Mail</label>
+        <InputText id="email" @bind-Value="user.Email"></InputText>
+    </div>
+    <div>
+        <button type="submit">Create User</button>
+    </div>
+</EditForm>
+
+<div>
+    <button @onclick="ClosePage">Close Page</button>
+</div>
+```
+
+4. create methode to insert the user into the database
+	1. we have to map the UI Model to the Backend  -> happens in CreateUser()
+``` C#
+@code {
+    private CreateUserModel user = new();
+
+    private void ClosePage()
+    {
+        navManager.NavigateTo("/");
+    }
+
+    private async Task CreateUser()
+    {
+        UserModel u = new()
+            {
+                Surname = user.Surname,
+                Forname = user.Forname,
+                Email = user.Email,
+                BankAccountNumber = await userData.GetNewBankAccountNumber()
+            };
+
+        await userData.CreateUser(u);
+    }
+}
+```
+
+More methodes & input forms for testing the data access can be found in the [GitHub Repository](https://github.com/lucasmenke/banking-web-app/blob/master/BankingAppUI/Pages/SampleData.razor) of this project.
 
 ***
 
