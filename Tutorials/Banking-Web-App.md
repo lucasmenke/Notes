@@ -24,29 +24,6 @@ Finished date of project:
 
 ***
 
-## Data Structure
-
-- User
-	- Id 
-		- BsonId -> unique id property of class object
-		- BsonType.ObjectId ->  automatically assigns value to Id property (leave it blank when creating object)
-	- Surname
-	- Forname
-	- Bank Account Number
-	- Balance
-	- E-Mail
-
-- Transaction
-	- Id
-		- BsonId
-		- BsonRepresentation(BsonType.ObjectId)
-	- FromUserId
-	- ToUserId
-	- Amount
-	- DateCreated
-
-***
-
 ## Project Structure
 
 1. Blazor Server UI > has a one sided dependency with the Class Library -> project needs Class Library to build
@@ -70,8 +47,71 @@ Finished date of project:
 - Microsoft.Identity.Web.UI
 
 <ins>Class Library</ins>
+- Microsoft.Extensions.Caching.Memory
 - Microsoft.Extensions.Configuration.Abstract
 - MongoDB.Driver
+
+***
+
+## Data Structure
+
+- User
+	- Id 
+		- BsonId -> unique id property of class object
+		- BsonType.ObjectId ->  automatically assigns value to Id property (leave it blank when creating object)
+	- Surname
+	- Forname
+	- E-Mail
+	- Bank Account Number
+	- Balance
+	- DateCreated
+	- ActiveAccount
+
+- Transaction
+	- Id
+		- BsonId
+		- BsonRepresentation(BsonType.ObjectId)
+	- FromUserId
+	- ToUserId
+	- Amount
+	- DateCreated
+
+***
+
+## Models
+
+1. UserModel.cs
+
+``` C#
+public class UserModel
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+    public string Surname { get; set; }
+    public string Forname { get; set; }
+    public string Email { get; set; }
+    public int BankAccountNumber { get; set; }
+    public double Balance { get; set; } = 0;
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+    public bool ActiveAccount { get; set; } = true;
+}
+```
+
+2. TransactionModel.cs
+
+``` C#
+public class TransactionModel
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+    public string FromUserId { get; set; }
+    public string ToUserId { get; set; }
+    public double Amount { get; set; }
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+}
+```
 
 ***
 
@@ -150,11 +190,13 @@ This class communicates with the database (CRUD - create, read, update, delete).
 public class MongoUserData
 {
     private readonly IMongoCollection<UserModel> _users;
+    private readonly IMemoryCache _cache;
+    private const string CacheName = "BankAccountNumber";
 
-    // get the UserCollection from the IDbConnection parameter
-    public MongoUserData(IDbConnection db)
+    public MongoUserData(IDbConnection db, IMemoryCache cache)
     {
         _users = db.UserCollection;
+        _cache = cache;
     }
 }
 ```
@@ -164,16 +206,32 @@ public class MongoUserData
 public class MongoUserData : IUserData
 {
     private readonly IMongoCollection<UserModel> _users;
+    private readonly IMemoryCache _cache;
+    private const string CacheName = "BankAccountNumber";
 
-    public MongoUserData(IDbConnection db)
+    public MongoUserData(IDbConnection db, IMemoryCache cache)
     {
         _users = db.UserCollection;
+        _cache = cache;
     }
 
     // create
-    public Task CreateUser(UserModel user)
+    public async Task CreateUser(UserModel user)
     {
-        return _users.InsertOneAsync(user);
+        try
+        {
+            var index = new BsonDocument
+            {
+                {"Email", 1}
+            };
+            var indexModel = new CreateIndexModel<UserModel>(index, new CreateIndexOptions { Unique = true });
+            await _users.Indexes.CreateOneAsync(indexModel);
+            await _users.InsertOneAsync(user);
+        }
+        catch (Exception)
+        {
+            return;
+        }
     }
 
     // read
@@ -183,12 +241,53 @@ public class MongoUserData : IUserData
         return results.ToList();
     }
 
-    public async Task<UserModel> GetUser(string id)
+    public async Task<UserModel> GetUserById(string id)
     {
         var result = await _users.FindAsync(u => u.Id == id);
         return result.FirstOrDefault();
     }
 
+    public async Task<UserModel> GetUserByEmail(string mail)
+    {
+        var result = await _users.FindAsync(u => u.Email == mail);
+        return result.FirstOrDefault();
+    }
+
+    public async Task<UserModel> GetUserByBankAccountNumber(int bankAccountNumber)
+    {
+        var result = await _users.FindAsync(u => u.BankAccountNumber == bankAccountNumber);
+        return result.FirstOrDefault();
+    }
+
+    public async Task<int> GetNewBankAccountNumber()
+    {
+        var output = _cache.Get<int>(CacheName);
+        if (output == 0)
+        {
+            UserModel user = await _users
+                .Find(_ => true)
+                .SortByDescending(u => u.DateCreated)
+                .Limit(1)
+                .FirstOrDefaultAsync();
+
+            if (user is null)
+            {
+                output = 1000000;
+            }
+            else
+            {
+                output = user.BankAccountNumber + 1;
+            }
+
+            _cache.Set(CacheName, output, TimeSpan.FromDays(90));
+
+            return output;
+        }
+        else
+        {
+            return output + 1;
+        }
+    }
 
     // update
     public Task UpdateUser(UserModel user)
@@ -198,14 +297,7 @@ public class MongoUserData : IUserData
         return _users.ReplaceOneAsync(filter, user, new ReplaceOptions { IsUpsert = false });
     }
 
-
-    // delete
-    public Task DeleteUser(UserModel user)
-    {
-        var filter = Builders<UserModel>.Filter.Eq("Id", user.Id);
-        return _users.DeleteOneAsync(filter);
-    }
-}
+    // delete -> users can't be deleted they can just be set to unactive
 ```
 
 3. create Interface out of the class
@@ -238,7 +330,6 @@ public class MongoTransactionData : ITransactionData
     private readonly IUserData _userData;
     private readonly IMongoCollection<TransactionModel> _transactions;
 
-    // parameters are passed from the dependency injection in the RegisterServices.cs
     public MongoTransactionData(IDbConnection db, IUserData userData)
     {
         _db = db;
@@ -247,22 +338,19 @@ public class MongoTransactionData : ITransactionData
     }
 
     // create
-    public async Task CreateTransaction(TransactionModel transaction)
+    public async Task CreateMultiTransaction(TransactionModel transaction)
     {
         var client = _db.Client;
 
         using var session = await client.StartSessionAsync();
 
-        // transaction ensures that when we write to different collection the write completly succeeds or completly fails
         session.StartTransaction();
 
         try
         {
-            // get both parties of the transaction
-            var fromUser = await _userData.GetUser(transaction.FromUserId);
-            var toUser = await _userData.GetUser(transaction.ToUserId);
+            var fromUser = await _userData.GetUserById(transaction.FromUserId);
+            var toUser = await _userData.GetUserById(transaction.ToUserId);
 
-            // update their balances
             fromUser.Balance -= transaction.Amount;
             toUser.Balance += transaction.Amount;
 
@@ -271,14 +359,39 @@ public class MongoTransactionData : ITransactionData
 
             await _transactions.InsertOneAsync(transaction);
 
-            // commit transaction
             await session.CommitTransactionAsync();
         }
         catch (Exception)
         {
-            // in case of an exception the session will be aborted -> no db data changed
             await session.AbortTransactionAsync();
-            throw;
+            return;
+        }
+    }
+
+    public async Task CreateSingleTransaction(TransactionModel transaction)
+    {
+        var client = _db.Client;
+
+        using var session = await client.StartSessionAsync();
+
+        session.StartTransaction();
+
+        try
+        {
+            var fromUser = await _userData.GetUserById(transaction.FromUserId);
+
+            fromUser.Balance += transaction.Amount;
+
+            await _userData.UpdateUser(fromUser);
+
+            await _transactions.InsertOneAsync(transaction);
+
+            await session.CommitTransactionAsync();
+        }
+        catch (Exception)
+        {
+            await session.AbortTransactionAsync();
+            return;
         }
     }
 
@@ -344,6 +457,100 @@ public static class RegisterServices
     }
 }
 ```
+
+***
+
+## Create Sample Data
+
+This pages allows us to add some sample data to test our database access methodes and insert our first dummy data. Don't put business logic in here. This page is only for testing the data access.
+
+1. create UI Models under Blazor Server Project/Models
+	1. allows a cleaner speration from Fontend Data and Backend Data
+		1. f.e. wo don´t want the user to choose a bank account number so we don´t include it in the UI Model
+		2. we can add Data Annotations to UI Model
+``` C#
+public class CreateUserModel
+{
+    [Required]
+    [MaxLength(50, ErrorMessage = "Surname is too long.")]
+    public string Surname { get; set; }
+
+    [Required]
+    [MaxLength(50, ErrorMessage = "Forname is too long.")]
+    public string Forname { get; set; }
+
+    [Required]
+    [EmailAddress]
+    [DisplayName("E-Mail")]
+    public string Email { get; set; }
+}
+```
+
+2. create razor page for sample data
+3. create input form
+``` C#
+@page "/SampleData"
+@using BankingAppUI.Models;
+@inject IUserData userData
+@inject ITransactionData transactionData
+@inject NavigationManager navManager
+
+<h3>Sample Data</h3>
+
+<EditForm Model="user" OnValidSubmit="CreateUser">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="forname">Forname</label>
+        <InputText id="forname" @bind-Value="user.Forname"></InputText>
+    </div>
+    <div>
+        <label for="surname">Surname</label>
+        <InputText id="surname" @bind-Value="user.Surname"></InputText>
+    </div>
+    <div>
+        <label for="email">E-Mail</label>
+        <InputText id="email" @bind-Value="user.Email"></InputText>
+    </div>
+    <div>
+        <button type="submit">Create User</button>
+    </div>
+</EditForm>
+
+<div>
+    <button @onclick="ClosePage">Close Page</button>
+</div>
+```
+
+4. create methode to insert the user into the database
+	1. we have to map the UI Model to the Backend  -> happens in CreateUser()
+``` C#
+@code {
+    private CreateUserModel user = new();
+    private CreateDeposit deposit = new();
+    string createUserReturnMsg = string.Empty;
+
+    private void ClosePage()
+    {
+        navManager.NavigateTo("/");
+    }
+
+    private async Task CreateUser()
+    {
+        UserModel u = new()
+            {
+                Surname = user.Surname,
+                Forname = user.Forname,
+                Email = user.Email,
+                BankAccountNumber = await userData.GetNewBankAccountNumber()
+            };
+
+        await userData.CreateUser(u);
+    }
+}
+```
+
+More methodes & input forms for testing the data access can be found in the [GitHub Repository](https://github.com/lucasmenke/banking-web-app/blob/master/BankingAppUI/Pages/SampleData.razor) of this project.
 
 ***
 
