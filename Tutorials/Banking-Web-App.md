@@ -550,7 +550,7 @@ public class CreateUserModel
 }
 ```
 
-More methodes & input forms for testing the data access can be found in the [GitHub Repository](https://github.com/lucasmenke/banking-web-app/blob/master/BankingAppUI/Pages/SampleData.razor) of this project.
+More methodes (deposite money, withdraw money, show transactions of user, show account balance) for testing the data access can be found in the [GitHub Repository](https://github.com/lucasmenke/banking-web-app/blob/master/BankingAppUI/Pages/SampleData.razor) of this project.
 
 ***
 
