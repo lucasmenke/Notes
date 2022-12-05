@@ -416,7 +416,7 @@ public class MongoTransactionData : ITransactionData
 
     public async Task<List<TransactionModel>> GetTransactionsPerUser(string userId)
     {
-        var result = await _transactions.FindAsync(t => t.FromUserId == userId);
+        var result = await _transactions.FindAsync(t => t.FromUserId == userId || t.ToUserId == userId);
         return result.ToList();
     }
 
