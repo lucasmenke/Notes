@@ -35,6 +35,10 @@
 
 - [MVC C#](https://github.com/lucasmenke/notes/blob/main/content/MVC.md)
 
+### N
+
+- [Networks](https://github.com/lucasmenke/notes/blob/main/content/Networks.md)
+
 ### R
 
 - [Razor components](https://github.com/lucasmenke/notes/blob/main/content/RazorComponents.md)
