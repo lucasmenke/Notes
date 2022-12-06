@@ -1,9 +1,11 @@
-# Razar components (explained with BlazorApp)
+# Razor components (explained with BlazorApp)
 
 - blocks that can be nested reused & packaged
 - consists of html & C# + can have references to other components
 - can be complete page (folder Pages) or a non-page component (folder Shared)
 - parameters can be assigned upon reference or via Routing
+
+***
 
 ## Reference
 
@@ -20,3 +22,9 @@
 ![Razor lifecycle related methods override](https://i.imgur.com/zs0Y4R9.png)
 - components can be disposable -> ```@implements IDisposable```
 - possible to write @code{} block to a base class which the component inherits from
+
+***
+
+# Tags
+
+#Programming #WEB #CSharp #Razor

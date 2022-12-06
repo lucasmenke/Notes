@@ -24,6 +24,12 @@ Following components will be used:
 
 ***
 
-## Tutorial Project with In-Depth Explanation
+# MOC
 
-[Banking Web App](https://github.com/lucasmenke/notes/blob/main/content/GlobalUsingDirective.md)
+[Tutorial Project with In-Depth Explanation - Banking Web App](https://github.com/lucasmenke/notes/blob/main/content/GlobalUsingDirective.md)
+
+***
+
+# Tags
+
+#Programming #Project #WEB #CSharp #Blazor #Razor #Database #MongoDB #ActiveDirectory

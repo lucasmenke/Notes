@@ -31,6 +31,8 @@
 
 - [HashSet](https://github.com/lucasmenke/notes/blob/main/content/HashSet.md)
 
+- [HttpContext](https://github.com/lucasmenke/notes/blob/main/content/HttpContext.md)
+
 ### M
 
 - [MongoDB](https://github.com/lucasmenke/notes/blob/main/content/MongoDB.md)

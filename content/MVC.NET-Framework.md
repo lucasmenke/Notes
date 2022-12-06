@@ -274,3 +274,9 @@ public class Student
 
 - static variables are global variables
 - Static data will be the same for all users of the application, while session is "per user"
+
+***
+
+# Tags
+
+#Programming #WEB #MVC #CSharp 
