@@ -9,3 +9,9 @@
 		- XMLHttpRequest
 
 ***Examples:*** Gmail, Netflix, Facebook
+
+***
+
+# Tags
+
+#Programming #GeneralProgrammingConcept #WEB #WASM

@@ -27,3 +27,9 @@ SAN: Storage Area Network
 7. Application Layer -> Access to Networks -> Protocols -> HTTP
 
 ![](https://i.imgur.com/mtgfE4M.png)
+
+***
+
+# Tags
+
+#IT #Networks #OSI

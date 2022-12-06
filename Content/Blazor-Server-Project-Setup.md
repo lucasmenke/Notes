@@ -127,3 +127,12 @@ This folder contains classes that take care of the connection to the database & 
 ## Register Services
 
 Here you want to add the DataAccess Interfaces to the dependency injection
+
+<ins>For an in depth view how to create classes for MongoDB data access refere to this sample project</ins>
+- [Banking Web App](https://github.com/lucasmenke/notes/blob/main/Tutorials/Banking-Web-App.md)
+
+***
+
+# Tags
+
+#Programming #WEB #CSharp #Blazor #Razor
