@@ -7,6 +7,8 @@
 
 ### B
 
+- [Blazor Circuit](https://github.com/lucasmenke/notes/blob/main/content/Blazor-Circuit.md)
+
 - [Blazor Client](https://github.com/lucasmenke/notes/blob/main/content/BlazorClient.md)
 
 - [Blazor Server](https://github.com/lucasmenke/notes/blob/main/content/BlazorServer.md)
@@ -30,6 +32,8 @@
 ### H
 
 - [HashSet](https://github.com/lucasmenke/notes/blob/main/content/HashSet.md)
+
+- [HttpContext](https://github.com/lucasmenke/notes/blob/main/content/HttpContext.md)
 
 ### M
 

@@ -11,4 +11,10 @@
 
 [Setup Blazor Server Project](https://github.com/lucasmenke/notes/blob/main/content/BlazorServerProject.md)
 
+***
+
+# Tags
+
+#Programming #WEB #CSharp #Blazor #Razor 
+
 

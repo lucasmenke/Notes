@@ -9,3 +9,15 @@
 - less interactive because new display elements needs to be requested, processed & renders by the server before it can be downloaded by the client + page needs to be refreshed
 
 ***Examples:*** C# MVC, PHP, Blazor (server side & client side)
+
+***
+
+# MOC
+
+[Balzor Server](https://github.com/lucasmenke/notes/blob/main/content/BlazorServer.md)
+
+***
+
+# Tags
+
+#Programming #GeneralProgrammingConcept #WEB

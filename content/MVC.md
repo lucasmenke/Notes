@@ -20,4 +20,9 @@ They only talk vie the Controller
 
 [MVC .NET Framework](https://github.com/lucasmenke/notes/blob/work/content/MVC.NET-Framework.md)
 
+***
+
+# Tags
+
+#Programming #GeneralProgrammingConcept #WEB #MVC 
 
