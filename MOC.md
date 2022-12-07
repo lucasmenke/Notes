@@ -3,60 +3,58 @@
 
 ### A
 
-- [API](https://github.com/lucasmenke/notes/blob/work/content/API.md)
+- [API](https://github.com/lucasmenke/notes/blob/main/Content/API.md)
 
 ### B
 
-- [Blazor Circuit](https://github.com/lucasmenke/notes/blob/main/content/Blazor-Circuit.md)
+- [Blazor Circuit](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Circuit.md)
 
-- [Blazor Client](https://github.com/lucasmenke/notes/blob/main/content/BlazorClient.md)
+- [Blazor Client](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Client.md)
 
-- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/content/BlazorServer.md)
-
-- [Blazor Web Assembly](https://github.com/lucasmenke/notes/blob/main/content/BlazorWebAssembly.md)
+- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server.md)
 
 ### C
 
-- [Client Side](https://github.com/lucasmenke/notes/blob/main/content/ClientSide.md)
+- [Client Side](https://github.com/lucasmenke/notes/blob/main/Content/Client-Side.md)
 
 ### D
 
-- [Database Transaction](https://github.com/lucasmenke/notes/blob/main/content/DatabaseTransaction.md)
+- [Database Transaction](https://github.com/lucasmenke/notes/blob/main/Content/Database-Transaction.md)
 
-- [Dependency Injection](https://github.com/lucasmenke/notes/blob/main/content/DependencyInjection.md)
+- [Dependency Injection](https://github.com/lucasmenke/notes/blob/main/Content/Dependency-Injection.md)
 
 ### G
 
-- [Global Using Directives](https://github.com/lucasmenke/notes/blob/main/content/GlobalUsingDirective.md)
+- [Global Using Directives](https://github.com/lucasmenke/notes/blob/main/Content/Global-Using-Directive.md)
 
 ### H
 
-- [HashSet](https://github.com/lucasmenke/notes/blob/main/content/HashSet.md)
+- [HashSet](https://github.com/lucasmenke/notes/blob/main/Content/HashSet.md)
 
-- [HttpContext](https://github.com/lucasmenke/notes/blob/main/content/HttpContext.md)
+- [HttpContext](https://github.com/lucasmenke/notes/blob/main/Content/HttpContext.md)
 
 ### M
 
-- [MongoDB](https://github.com/lucasmenke/notes/blob/main/content/MongoDB.md)
+- [MVC](https://github.com/lucasmenke/notes/blob/main/Content/MVC.md)
 
-- [MVC C#](https://github.com/lucasmenke/notes/blob/main/content/MVC.md)
+- [MongoDB](https://github.com/lucasmenke/notes/blob/main/Content/MongoDB.md)
 
 ### N
 
-- [Networks](https://github.com/lucasmenke/notes/blob/main/content/Networks.md)
+- [Networks](https://github.com/lucasmenke/notes/blob/main/Content/Networks.md)
 
 ### R
 
-- [Razor components](https://github.com/lucasmenke/notes/blob/main/content/RazorComponents.md)
+- [Razor Components](https://github.com/lucasmenke/notes/blob/main/Content/Razor-Components.md)
 
 ### S
 
-- [Server Side](https://github.com/lucasmenke/notes/blob/main/content/ServerSide.md)
+- [Server Side](https://github.com/lucasmenke/notes/blob/main/Content/Server-Side.md)
 
-- [Single Page Appliation](https://github.com/lucasmenke/notes/blob/main/content/SinglePageApplication.md)
+- [Single Page Appliation](https://github.com/lucasmenke/notes/blob/main/Content/Single-Page-Application.md)
 
-- [Singleton](https://github.com/lucasmenke/notes/blob/main/content/Singleton.md)
+- [Singleton](https://github.com/lucasmenke/notes/blob/main/Content/Singleton.md)
 
 ### W
 
-- [Web Assembly (WASM)](https://github.com/lucasmenke/notes/blob/main/content/WebAssembly.md)
+- [Web Assembly (WASM)](https://github.com/lucasmenke/notes/blob/main/Content/WebAssembly.md)
