@@ -19,6 +19,6 @@ A Razor componenet doesn't have to render anything to keep it's state.
 
 ***
 
-# Tags
+## Tags
 
-#Programming #WEB #Blazor 
+#Programming #CSharp #WEB #Blazor 

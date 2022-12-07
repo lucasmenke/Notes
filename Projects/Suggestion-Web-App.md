@@ -24,12 +24,12 @@ Following components will be used:
 
 ***
 
-# MOC
+## MOC
 
 [Tutorial Project with In-Depth Explanation - Banking Web App](https://github.com/lucasmenke/notes/blob/main/Tutorials/Banking-Web-App.md)
 
 ***
 
-# Tags
+## Tags
 
 #Programming #Project #WEB #CSharp #Blazor #Razor #Database #MongoDB #ActiveDirectory

@@ -11,6 +11,8 @@
 
 - [Blazor Client](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Client.md)
 
+- [Blazor HttpContext](https://github.com/lucasmenke/notes/blob/main/Content/HttpContext.md)
+
 - [Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server.md)
 
 ### C
@@ -30,8 +32,6 @@
 ### H
 
 - [HashSet](https://github.com/lucasmenke/notes/blob/main/Content/HashSet.md)
-
-- [HttpContext](https://github.com/lucasmenke/notes/blob/main/Content/HttpContext.md)
 
 ### M
 
