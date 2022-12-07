@@ -10,7 +10,7 @@
 
 # MOC
 
-[Balzor Client](https://github.com/lucasmenke/notes/blob/main/content/BlazorClient.md)
+[Blazor Client](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Client.md)
 
 ***
 

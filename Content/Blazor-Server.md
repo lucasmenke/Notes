@@ -9,7 +9,7 @@
 
 # MOC
 
-[Setup Blazor Server Project](https://github.com/lucasmenke/notes/blob/main/content/BlazorServerProject.md)
+[Setup Blazor Server Project](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server-Project-Setup.md)
 
 ***
 
