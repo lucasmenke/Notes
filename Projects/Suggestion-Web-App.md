@@ -26,7 +26,7 @@ Following components will be used:
 
 # MOC
 
-[Tutorial Project with In-Depth Explanation - Banking Web App](https://github.com/lucasmenke/notes/blob/main/content/GlobalUsingDirective.md)
+[Tutorial Project with In-Depth Explanation - Banking Web App](https://github.com/lucasmenke/notes/blob/main/Tutorials/Banking-Web-App.md)
 
 ***
 

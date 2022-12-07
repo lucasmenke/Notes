@@ -36,7 +36,7 @@ Finished date of project:
 	2. Models -> contains the backend models
 
 <ins>More in depth explanation / overview how to setup a blazor server project & databse</ins>
-- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/content/BlazorServer.md)
+- [Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server-Project-Setup.md)
 
 ***
 

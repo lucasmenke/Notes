@@ -14,7 +14,7 @@
 
 # MOC
 
-[Balzor Server](https://github.com/lucasmenke/notes/blob/main/content/BlazorServer.md)
+[Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server.md)
 
 ***
 
