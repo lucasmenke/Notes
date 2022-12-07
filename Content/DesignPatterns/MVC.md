@@ -22,7 +22,6 @@ They only talk vie the Controller
 
 ***
 
-# Tags
+## Tags
 
-#Programming #GeneralProgrammingConcept #WEB #MVC 
-
+#Programming #DesignPatterns #MVC

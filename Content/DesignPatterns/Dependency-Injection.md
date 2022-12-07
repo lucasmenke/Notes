@@ -42,6 +42,6 @@ _Use Singletons where you need to maintain application wide state. Application c
 
 ***
 
-# Tags
+## Tags
 
-#Programming #GeneralProgrammingConcept
+#Programming #DesignPatterns

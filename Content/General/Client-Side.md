@@ -8,12 +8,12 @@
 
 ***
 
-# MOC
+## MOC
 
 [Blazor Client](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Client.md)
 
 ***
 
-# Tags
+## Tags
 
 #Programming #GeneralProgrammingConcept #WEB 

@@ -25,6 +25,6 @@
 
 ***
 
-# Tags
+## Tags
 
-#Programming #WEB #CSharp #Razor
+#Programming #CSharp #WEB #Blazor #Razor

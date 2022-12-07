@@ -73,6 +73,6 @@ Output >>  Singleton works, both variables contain the same instance.
 
 ***
 
-# Tags
+## Tags
 
-#Programming #GeneralProgrammingConcept 
+#Programming #DesignPatterns

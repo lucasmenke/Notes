@@ -30,6 +30,6 @@ SAN: Storage Area Network
 
 ***
 
-# Tags
+## Tags
 
-#IT #Networks #OSI
+#IT #Network

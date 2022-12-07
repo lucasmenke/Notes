@@ -12,12 +12,12 @@
 
 ***
 
-# MOC
+## MOC
 
 [Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server.md)
 
 ***
 
-# Tags
+## Tags
 
-#Programming #GeneralProgrammingConcept #WEB
+#Programming #GeneralProgrammingConcept #WEB 
