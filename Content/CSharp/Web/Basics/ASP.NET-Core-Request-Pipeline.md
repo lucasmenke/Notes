@@ -19,6 +19,12 @@ A Request Pipeline consists of multiple [Middleware Components](). Each incoming
 
 ***
 
+## Blazor Apps
+
+Blazor apps run outside of the context of the ASP.NET Core pipeline.
+
+***
+
 ## Tags
 
 #Programming #CSharp #WEB #ASPDOTNET-Core
