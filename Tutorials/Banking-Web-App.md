@@ -16,11 +16,11 @@ Finished date of project:
 
 ## Planing project
 
-1. Features
-	- createing accounts
-	- see balance
-	- add balance
-	- transfer balance to other accounts
+<ins>Features</ins>
+- creating accounts
+- see balance
+- add balance
+- transfer balance to other accounts
 
 ***
 
@@ -121,6 +121,7 @@ public class TransactionModel
 This class is a dependency which will be injected in BalzorServerProject/RegisterServices.cs 
 
 1. Setup the connection to the database
+
 ``` C#
 // make it a public class
 public class DbConnection
@@ -146,6 +147,7 @@ public class DbConnection
 ```
 
 2. Get the collections
+
 ``` C#
 public class DbConnection
 {
@@ -185,6 +187,7 @@ public class DbConnection
 This class communicates with the database (CRUD - create, read, update, delete). The constructor of this class gets called when the dependy is injected into RegisterServices.cs and used on a razor page that gets called > `@inject IUserData userData`
 
 1. create constructor which recvives IDbConnection as parameter
+
 ``` C#
 // make class public
 public class MongoUserData
@@ -202,6 +205,7 @@ public class MongoUserData
 ```
 
 2. create CRUD methods
+
 ``` C#
 public class MongoUserData : IUserData
 {
@@ -305,6 +309,7 @@ public class MongoUserData : IUserData
 <ins>MongoTransactionData.cs</ins>
 
 1. create constructor that recives IDbConnection & IUserData as parameters
+
 ``` C#
 public class MongoTransactionData : ITransactionData
 {
@@ -323,6 +328,7 @@ public class MongoTransactionData : ITransactionData
 ```
 
 2. create CRUD methods
+
 ``` C#
 public class MongoTransactionData : ITransactionData
 {
@@ -441,6 +447,7 @@ public class MongoTransactionData : ITransactionData
 When injecting the Interfaces as dependencies, we have to decide between Transient, Scoped and Singleton. Here are more information about [Dependeny Injection Lifetime](https://github.com/lucasmenke/notes/blob/main/content/DependencyInjection.md).
 
 1. Register Services as Singleton, Scoped or Transient
+
 ``` C#
 public static class RegisterServices
 {
@@ -468,6 +475,7 @@ This pages allows us to add some sample data to test our database access methode
 	1. allows a cleaner speration from Fontend Data and Backend Data
 		1. f.e. wo don´t want the user to choose a bank account number so we don´t include it in the UI Model
 		2. we can add Data Annotations to UI Model
+
 ``` C#
 public class CreateUserModel
 {
@@ -487,7 +495,9 @@ public class CreateUserModel
 ```
 
 2. create razor page for sample data
+
 3. create input form
+
 ``` C#
 @page "/SampleData"
 @using BankingAppUI.Models;
@@ -524,6 +534,7 @@ public class CreateUserModel
 
 4. create methode to insert the user into the database
 	1. we have to map the UI Model to the Backend  -> happens in CreateUser()
+
 ``` C#
 @code {
     private CreateUserModel user = new();
