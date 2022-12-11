@@ -4,7 +4,7 @@ The "Banking Web App" allows to create accounts, add  deposits, withdraw money a
 
 Finished date of project: 
 <br>
-***
+----
 <br>
 ## Tech Stack
 
@@ -12,7 +12,7 @@ Finished date of project:
 - MongoDB (including Atlas)
 - Azure Active Directors B2C
 <br>
-***
+----
 <br>
 ## Planing project
 
@@ -22,7 +22,7 @@ Finished date of project:
 - add balance
 - transfer balance to other accounts
 <br>
-***
+----
 <br>
 ## Project Structure
 
@@ -38,7 +38,7 @@ Finished date of project:
 <ins>More in depth explanation / overview how to setup a blazor server project & databse</ins>
 - [Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server-Project-Setup.md)
 <br>
-***
+----
 <br>
 ## Extensions
 
@@ -51,7 +51,7 @@ Finished date of project:
 - Microsoft.Extensions.Configuration.Abstract
 - MongoDB.Driver
 <br>
-***
+----
 <br>
 ## Data Structure
 
@@ -76,7 +76,7 @@ Finished date of project:
 	- Amount
 	- DateCreated
 <br>
-***
+----
 <br>
 ## Models
 
@@ -113,7 +113,7 @@ public class TransactionModel
 }
 ```
 <br>
-***
+----
 <br>
 ## Data Access
 
@@ -440,7 +440,7 @@ public class MongoTransactionData : ITransactionData
 }
 ```
 <br>
-***
+----
 <br>
 ## Register Services
 
@@ -465,7 +465,7 @@ public static class RegisterServices
 }
 ```
 <br>
-***
+----
 <br>
 ## Create Sample Data
 
@@ -563,11 +563,11 @@ public class CreateUserModel
 
 More methodes (deposite money, withdraw money, show transactions of user, show account balance) for testing the data access can be found in the [GitHub Repository](https://github.com/lucasmenke/banking-web-app/blob/master/BankingAppUI/Pages/SampleData.razor) of this project.
 <br>
-***
+----
 <br>
 ## Authentication
 <br>
-***
+----
 <br>
 ## Tags
 <br>
