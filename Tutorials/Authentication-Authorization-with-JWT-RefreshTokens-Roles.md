@@ -22,6 +22,8 @@ In this project I will create a page for user to create an account and save them
 
 ## Extensions
 
+<ins>ASP.NET Core Web API</ins>
+- Microsoft.EntitiyFrameworkCore
 
 ***
 
@@ -71,7 +73,18 @@ public class UserDTOModel
 
 ## SQL
 
-***
+DataAccess Layer ??
+
+<ins>DbContext</ins>
+
+
+<ins>Create Database</ins>
+1. Open Package Manager Console 
+	1. View -> Other Windows -> Package Manager Console
+2. cd into ProjectFolder
+	1. cd 
+
+----
 
 ## Services
 
