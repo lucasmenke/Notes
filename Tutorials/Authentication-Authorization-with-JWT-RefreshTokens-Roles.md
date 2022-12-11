@@ -1,32 +1,32 @@
 # Authentication & Authorization in with JSON Web Tokens (JWT), Refresh Tokens & Roles
 
 In this project I will create a page for user to create an account and save them in a database using hash & salt. Furthermore registerd users are able to log back in. In addition to that I will use JWT & Refresh Tokens. A registerd user can get a role and based on this role the user will be able to call specific API endpoints.
-
+<br>
 ***
-
+<br>
 ## Tech Stack
 
 - ASP.NET Core Web API (.NET 6)
 	- Authentication Type -> None
-
+<br>
 ***
-
+<br>
 ## Project Structure
 
 1. Blazor Client
 2. ASP.NET Core Web API
 	1. Models / DTO
 	2. Services
-
+<br>
 ***
-
+<br>
 ## Extensions
 
 <ins>ASP.NET Core Web API</ins>
 - Microsoft.EntitiyFrameworkCore
-
+<br>
 ***
-
+<br>
 ## Data Structure
 
 - User
@@ -41,9 +41,9 @@ In this project I will create a page for user to create an account and save them
 		- string
 	- Password
 		- string
-
+<br>
 ***
-
+<br>
 ## Models
 
 1. UserModel.cs
@@ -68,9 +68,9 @@ public class UserDTOModel
     public string Password { get; set; } = string.Empty;
 }
 ```
-
+<br>
 ***
-
+<br>
 ## SQL
 
 DataAccess Layer ??
@@ -83,17 +83,17 @@ DataAccess Layer ??
 	1. View -> Other Windows -> Package Manager Console
 2. cd into ProjectFolder
 	1. cd 
-
-----
-
+<br>
+***
+<br>
 ## Services
 
 Create an Authentication Service that can be injected in the controller, so the controller stays clean & simple.
 
 1. create a new Services/AuthService/AuthService.cs
-
+<br>
 ***
-
+<br>
 ## Controllers
 
 1. AuthController.cs -> started as Empty API Controller

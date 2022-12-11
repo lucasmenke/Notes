@@ -3,17 +3,17 @@
 The "Banking Web App" allows to create accounts, add  deposits, withdraw money and transfer money to other bank accounts.
 
 Finished date of project: 
-
+<br>
 ***
-
+<br>
 ## Tech Stack
 
 - Blazor Server (.NET 6)
 - MongoDB (including Atlas)
 - Azure Active Directors B2C
-
+<br>
 ***
-
+<br>
 ## Planing project
 
 <ins>Features</ins>
@@ -21,9 +21,9 @@ Finished date of project:
 - see balance
 - add balance
 - transfer balance to other accounts
-
+<br>
 ***
-
+<br>
 ## Project Structure
 
 1. Blazor Server UI > has a one sided dependency with the Class Library -> project needs Class Library to build
@@ -37,9 +37,9 @@ Finished date of project:
 
 <ins>More in depth explanation / overview how to setup a blazor server project & databse</ins>
 - [Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server-Project-Setup.md)
-
+<br>
 ***
-
+<br>
 ## Extensions
 
 <ins>Blazor Server project</ins>
@@ -50,9 +50,9 @@ Finished date of project:
 - Microsoft.Extensions.Caching.Memory
 - Microsoft.Extensions.Configuration.Abstract
 - MongoDB.Driver
-
+<br>
 ***
-
+<br>
 ## Data Structure
 
 - User
@@ -75,9 +75,9 @@ Finished date of project:
 	- ToUserId
 	- Amount
 	- DateCreated
-
+<br>
 ***
-
+<br>
 ## Models
 
 1. UserModel.cs
@@ -112,9 +112,9 @@ public class TransactionModel
     public DateTime DateCreated { get; set; } = DateTime.UtcNow;
 }
 ```
-
+<br>
 ***
-
+<br>
 ## Data Access
 
 <ins>DbConnection.cs</ins>
@@ -439,9 +439,9 @@ public class MongoTransactionData : ITransactionData
     // transaction are undeletable
 }
 ```
-
+<br>
 ***
-
+<br>
 ## Register Services
 
 When injecting the Interfaces as dependencies, we have to decide between Transient, Scoped and Singleton. Here are more information about [Dependeny Injection Lifetime](https://github.com/lucasmenke/notes/blob/main/content/DependencyInjection.md).
@@ -464,9 +464,9 @@ public static class RegisterServices
     }
 }
 ```
-
+<br>
 ***
-
+<br>
 ## Create Sample Data
 
 This pages allows us to add some sample data to test our database access methodes and insert our first dummy data. Don't put business logic in here. This page is only for testing the data access.
@@ -562,13 +562,14 @@ public class CreateUserModel
 ```
 
 More methodes (deposite money, withdraw money, show transactions of user, show account balance) for testing the data access can be found in the [GitHub Repository](https://github.com/lucasmenke/banking-web-app/blob/master/BankingAppUI/Pages/SampleData.razor) of this project.
-
+<br>
 ***
-
+<br>
 ## Authentication
-
+<br>
 ***
-
+<br>
 ## Tags
+<br>
 
 #Programming #Project #WEB #CSharp #Blazor #Razor #Database #MongoDB
