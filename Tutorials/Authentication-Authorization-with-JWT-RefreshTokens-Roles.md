@@ -2,14 +2,18 @@
 
 In this project I will create a page for user to create an account and save them in a database using hash & salt. Furthermore registerd users are able to log back in. In addition to that I will use JWT & Refresh Tokens. A registerd user can get a role and based on this role the user will be able to call specific API endpoints.
 <br>
+
 ----
+
 <br>
 ## Tech Stack
 
 - ASP.NET Core Web API (.NET 6)
 	- Authentication Type -> None
 <br>
+
 ----
+
 <br>
 ## Project Structure
 
