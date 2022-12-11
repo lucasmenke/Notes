@@ -117,8 +117,14 @@ DataAccess Layer ??
 	1. dotnet ef migrations add Initial
 5. create database -> creates .db file 
 	1. dotnet ef database update
-6. download & install [SqliteBrowser](https://sqlitebrowser.org/dl/)
-7. open db in SqliteBrowser
+6. add refresh token data to the table
+	1. dotnet ef migrations add RefreshTokenData
+	2. dotnet ef database update
+7. add user roles to table
+	1. dotnet ef migrations add UserRole
+	2. dotnet ef database update
+8. download & install [SqliteBrowser](https://sqlitebrowser.org/dl/)
+9. open db in SqliteBrowser
 <br>
 
 ## Services
@@ -159,3 +165,8 @@ A key is needed to create the JSON Web Token. A simple way to create that key, w
 
 ## Program.cs
 
+<br>
+
+## Notes
+
+- the frontend has to check if the refresh token is expired or close to expiring to request a new one
