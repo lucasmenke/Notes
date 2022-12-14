@@ -2,8 +2,7 @@
 
 ## GitHub / Obsidian
 
-I use GitHub / Obsidian as my notebook
-
+I use GitHub / Obsidian as my notebook. If you open the repo in Obsidian you can search for Tags definded under each file.
 <br>
 
 ## Navigation
