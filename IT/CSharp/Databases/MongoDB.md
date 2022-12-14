@@ -1,6 +1,6 @@
 # MongoDB
 
-MongoDB is a NoSQL database. Through that the database is able to store complete Objects. 
+MongoDB is a NoSQL database. Through that, the database is able to store complete Objects. 
 
 ***
 
