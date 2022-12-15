@@ -22,7 +22,8 @@ I order my notebook in a tree structured folder system.
 - in the [Tutorials](https://github.com/lucasmenke/Notes/tree/main/Tutorials) folder I have sample projects
 	- these projects focus on 
 
-
+<ins>Unfinsihed</ins>
+- in the [Unfinished](https://github.com/lucasmenke/Notes/tree/main/Unfinished) folder I have all my notes I am currently working on
 <br>
 
 ## Have fun
