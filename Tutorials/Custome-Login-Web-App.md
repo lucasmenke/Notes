@@ -8,6 +8,7 @@ In this project I will create a page for user to create an account and save them
 
 - ASP.NET Core Web API (.NET 6)
 	- Authentication Type -> None
+- Class Library (.NET 6)
 - Sqlite
 
 <br>
@@ -18,6 +19,8 @@ In this project I will create a page for user to create an account and save them
 2. ASP.NET Core Web API
 	1. Models / DTO
 	2. Services
+3. Class Library Business Logic Layer
+4. Class Library Data Access Layer
 
 <br>
 
