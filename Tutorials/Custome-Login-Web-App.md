@@ -19,8 +19,10 @@ In this project I will create a page for user to create an account and save them
 2. ASP.NET Core Web API
 	1. Models / DTO
 	2. Services
-3. Class Library Business Logic Layer
-4. Class Library Data Access Layer
+3. Class Library 
+	1. Business Logic Layer
+4. Class Library 
+	1. Data Access Layer
 
 <br>
 
@@ -30,10 +32,13 @@ In this project I will create a page for user to create an account and save them
 - Microsoft.EntitiyFrameworkCore
 - Microsoft.EntitiyFrameworkCore.Design
 - Microsoft.EntitiyFrameworkCore.Sqlite
-- Microsoft.IdentityModel.Tokens
-- System.IdentityModel.Tokens.Jwt
-- Microsoft.AspNetCore.Authentication.JwtBearer
-- Swashbuckle.AspNetCore.Filters
+
+<ins>DAL</ins>
+- Microsoft.EntitiyFrameworkCore
+- Microsoft.EntitiyFrameworkCore.Design
+- Microsoft.EntitiyFrameworkCore.Sqlite
+- Microsoft.Extensions.Configuration.Abstraction
+
 <br>
 
 ## Data Structure
@@ -59,6 +64,15 @@ In this project I will create a page for user to create an account and save them
 		- string
 	- Token
 		- string
+
+<br>
+
+## Setup API
+
+1. delete all WeatherForecast related code
+2. add a GlobalUsings.cs
+3. add a RegisterServices.cs
+	1. allows to outsources the dependency injection from the Program.cs into a seperate class
 
 <br>
 
@@ -107,7 +121,31 @@ public class AuthResponseDTOModel
 DataAccess Layer ??
 
 <ins>DbContext</ins>
+A derived DbContext instance is needed to create the database.
 
+``` C#
+public class DataContext : DbContext
+{
+    public DbSet<UserModel> Users { get; set; }
+
+    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+}
+```
+
+Furthermore, the DBContext needs to be added to the RegisterServices.cs which is responsible for the dependency injection
+
+``` C#
+public static class RegisterServices
+{
+    public static void ConfigureServices(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddDbContext<DataContext>(options => options.UseSqlite("Data Source=auth.db"));
+    }
+}
+```
 
 <ins>Create Database</ins>
 1. Open Package Manager Console 
@@ -116,18 +154,21 @@ DataAccess Layer ??
 	1. cd .\\AuthenticationWebAPI
 3. install EntityFramework
 	1. dotnet tool install --global dotnet-ef
-4. create a migration -> will add a new Migrations folder to the project
-	1. dotnet ef migrations add Initial
-5. create database -> creates .db file 
-	1. dotnet ef database update
-6. add refresh token data to the table
-	1. dotnet ef migrations add RefreshTokenData
-	2. dotnet ef database update
-7. add user roles to table
-	1. dotnet ef migrations add UserRole
-	2. dotnet ef database update
-8. download & install [SqliteBrowser](https://sqlitebrowser.org/dl/)
-9. open db in SqliteBrowser
+4. update ef if it is already installed
+	1. dotnet tool update --global dotnet-ef
+5. create a migration -> will add a new Migrations folder to the project (specify startup project)
+	1. dotnet ef migrations add Initial -s ..\\CustomLoginAPI\\CustomLoginAPI.csproj
+6. create database -> creates .db file 
+	1. dotnet ef database update -s ..\\CustomLoginAPI\\CustomLoginAPI.csproj
+7. add refresh token data to the table
+	1. dotnet ef migrations add RefreshTokenData -s ..\\CustomLoginAPI\\CustomLoginAPI.csproj
+	2. dotnet ef database update -s ..\\CustomLoginAPI\\CustomLoginAPI.csproj
+8. add user roles to table
+	1. dotnet ef migrations add UserRole -s ..\\CustomLoginAPI\\CustomLoginAPI.csproj
+	2. dotnet ef database update -s ..\\CustomLoginAPI\\CustomLoginAPI.csproj
+9. download & install [SqliteBrowser](https://sqlitebrowser.org/dl/)
+10. open db in SqliteBrowser
+
 <br>
 
 ## Services
