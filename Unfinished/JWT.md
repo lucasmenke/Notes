@@ -1,9 +1,8 @@
 # JWT
 
-Web tokens are data structures that contain information about a user or client in the form of digitally signed claims. They are typically used to authenticate users and provide access to certain resources or applications on a website or web service. Web tokens are often used in combination with other security measures, such as password authentication or two-factor authentication, to provide a more secure means of accessing online resources.
+Jason Web Token are a specific kind of [web tokens](). IN general, Web tokens are digital strings that represent a user's identity or authorization to access a specific resource. They are often used for authentication and authorization purposes in web applications and APIs.
 
 <br>
-
 
 ## Example
 
