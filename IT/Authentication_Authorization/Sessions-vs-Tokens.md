@@ -16,6 +16,20 @@ Sessions, on the other hand, are server-side constructs that are used to store u
 
 <br>
 
+## Differences
+
+- Web Tokens can give scoped authorization & Sessions grant all information available
+- Web Tokens can be given to Third-Partys & Sessions should only be shared between Server and client
+- Web Tokens HTTP Header & Session Cookie HTTP Header
+
+<br>
+
 ## Conclusion
 
 Overall, web tokens are generally considered to be a more secure and scalable solution for storing user information, as they are stored on the client-side and do not rely on the server to maintain state. However, sessions can be easier to implement and may be a suitable solution for smaller applications or those with simple authentication requirements.
+
+<br>
+
+## Tags
+
+#Programming #Authentication #Authorization

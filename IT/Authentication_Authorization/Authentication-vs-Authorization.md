@@ -13,3 +13,9 @@ Authentication is the process of verifying that someone is who they claim to be.
 ## Authorization
 
 Authorization is the process of granting or denying access to certain resources or actions based on the authenticated user's privileges or permissions. For example, an authenticated user might be authorized to read a file, but not authorized to modify it.
+
+<br>
+
+## Tags
+
+#Programming #Authentication #Authorization

@@ -29,3 +29,9 @@ Web tokens are data structures that contain information about a user or client i
 ## Transfer
 
 Web tokens are typically transferred between a client and a server in the form of an HTTP header. Often, they are encrypted to protect the sensitive information they contain.
+
+<br>
+
+## Tags
+
+#Programming #Authentication #Authorization

@@ -25,4 +25,12 @@ eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIs
 - Payload
 	- user data, like username, customerId
 	- scopes -> areas of granted authorization
-	- dates -> created & expired
+	- dates -> created & expires
+- signature
+	- ensures that content isn't modified
+
+<br>
+
+## Tags
+
+#Programming #Authentication #Authorization
