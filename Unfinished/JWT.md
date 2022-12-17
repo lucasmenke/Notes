@@ -16,4 +16,13 @@ eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIs
 
 - [Link](https://jwt.io/) to the Decoder
 
-![](https://i.imgur.com/aBo8hV6.png)
+![](https://i.imgur.com/OL6anGc.png)
+
+<ins>Decoded JWT Information</ins>
+
+- Header
+	- Algorithm & Token Type
+- Payload
+	- user data, like username, customerId
+	- scopes -> areas of granted authorization
+	- dates -> created & expired

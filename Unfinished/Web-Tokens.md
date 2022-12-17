@@ -21,6 +21,8 @@ Web tokens are data structures that contain information about a user or client i
 
 - JWT (Json Web Token) 
 	- widely used and popular standard for web tokenization
+- OAuth
+- OpenID
 
 <br>
 

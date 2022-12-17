@@ -6,7 +6,12 @@ When you log in to a website, a session is a way for the server to store informa
 
 ## Flow
 
-When you log in, the server creates a new session and assigns a unique session ID to you. This session ID is then sent to your browser as a cookie, which is a small piece of data stored on your computer.
+1. When you log in, the server creates a new session and assigns a unique session ID to the client 
+	2. the session Id is stored server sided
+2. This session ID is then sent to the clients browser as a cookie
+3. with every new request the client does, the cookie will automatically be send within the HTTP header
+4. the session ID from the cookie will be compared with the session ID on the server
+	1. if they match and the session ID isn't already expired on the server the client will be authorized
 
 <br>
 
