@@ -33,37 +33,34 @@ In this project I will create a page for user to create an account and save them
 - Microsoft.EntitiyFrameworkCore.Design
 - Microsoft.EntitiyFrameworkCore.Sqlite
 
+<ins>BLL</ins>
+- System.IdentityModel.Tokens.Jwt
+- Microsoft.IdentityModel.Tokens
+- Microsoft.AspNetCore.Http.Features
+- Microsoft.AspNetCore.Http.Abstractions
+
 <ins>DAL</ins>
 - Microsoft.EntitiyFrameworkCore
 - Microsoft.EntitiyFrameworkCore.Design
 - Microsoft.EntitiyFrameworkCore.Sqlite
-- Microsoft.Extensions.Configuration.Abstraction
-
 <br>
 
 ## Data Structure
 
 - User
-	- Id
-		- int
-	- Username
-		- string
-	- PasswordHash 
-		- byte[]
-	- PasswordSalt 
-	- byte[]
+	- Id: int
+	- Username: string
+	- PasswordHash: byte[]
+	- PasswordSalt: byte[]
 - UserDTO
-	- Username
-		- string
-	- Password
-		- string
+	- Username: string
+	- Password: string
 - AuthResponseDTO
-	- Success
-		- bool
-	- Message
-		- string
-	- Token
-		- string
+	- Success: bool
+	- Message: string
+	- Token: string
+	- RefreshToken: string
+	- TokenExpires: DateTime
 
 <br>
 
