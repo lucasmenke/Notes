@@ -3,9 +3,9 @@
 The "Banking Web App" allows to create accounts, add  deposits, withdraw money and transfer money to other bank accounts.
 
 Finished date of project: 
+
 <br>
-----
-<br>
+
 ## Tech Stack
 
 - Blazor Server (.NET 6)

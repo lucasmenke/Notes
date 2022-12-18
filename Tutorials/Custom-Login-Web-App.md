@@ -1,6 +1,8 @@
-# Custome Authentication & Authorization with JSON Web Tokens (JWT), Refresh Tokens & Roles
+# API for Authentication & Authorization with JSON Web Tokens (JWT), Refresh Tokens & Roles
 
 In this project I will create a page for user to create an account and save them in a database using hash & salt. Furthermore registerd users are able to log back in. In addition to that I will use JWT & Refresh Tokens. A registerd user can get a role and based on this role the user will be able to call specific API endpoints.
+
+Finished date of project: 18.12.2022
 
 <br>
 
@@ -32,6 +34,10 @@ In this project I will create a page for user to create an account and save them
 - Microsoft.EntitiyFrameworkCore
 - Microsoft.EntitiyFrameworkCore.Design
 - Microsoft.EntitiyFrameworkCore.Sqlite
+- Microsoft.AspNetCore.Authentication.JwtBearer (Version 6.0.12)
+	- Version 7 is not compatible with .NET Core 6
+- Swashbuckle.AspNetCore
+- Swashbuckle.AspNetCore.Filters
 
 <ins>BLL</ins>
 - System.IdentityModel.Tokens.Jwt

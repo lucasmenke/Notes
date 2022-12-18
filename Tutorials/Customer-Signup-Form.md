@@ -2,7 +2,7 @@
 
 The "Customer Signup Form" allows the customer to sign up for something (f.e custoemr program, raffle etc.). The Webpage is meant to be used on a tablet to get the customers signature.
 
-Finished date of project: 
+Finished date of project: 10.12.2022
 
 ***
 
