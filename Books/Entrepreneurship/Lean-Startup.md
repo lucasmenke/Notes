@@ -20,6 +20,11 @@ The book "The Lean Startup" by Eric Ries is a guide for entrepreneurs and busine
 
 <br>
 
+## Important Lessons
+
+- saying "at least I learnd something" after a failure is only to cheer yourself up
+	- if the goal was to learn "your learnings" from the failure, why did it take so long?
+
 ## Tags
 
 #Books #Business #Startup
