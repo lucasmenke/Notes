@@ -1,0 +1,2 @@
+1.  Coupon and deal management platform: This could be a tool that helps supermarkets create and manage coupons and other promotional offers for their customers.
+2.  Personalized shopping list: This could be a tool that helps customers create and manage shopping lists, and suggests products based on their past purchases, preferences and deals from their favorite super markets.
