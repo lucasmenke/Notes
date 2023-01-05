@@ -10,7 +10,7 @@
 
 ***Examples:*** Gmail, Netflix, Facebook
 
-***
+<br>
 
 ## Tags
 

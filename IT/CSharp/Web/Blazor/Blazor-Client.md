@@ -9,12 +9,6 @@
 
 <br>
 
-# MOC
-
-[Setup Blazor Client Project](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Client-Project-Setup.md)
-
-<br>
-
 ## Tags
 
 #Programming #CSharp #WEB #Blazor 

@@ -14,13 +14,13 @@ They only talk vie the Controller
 
 ![csharp-mvc](https://i.imgur.com/cZvcYsT.png)
 
-***
+<br>
 
 # MOC
 
-[MVC .NET Framework](https://github.com/lucasmenke/notes/blob/main/Content/MVC.NET-Framework.md)
+[MVC .NET Framework](https://github.com/lucasmenke/Notes/blob/main/IT/CSharp/Web/MVC/MVC.NET-Framework.md)
 
-***
+<br>
 
 ## Tags
 

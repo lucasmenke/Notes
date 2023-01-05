@@ -4,7 +4,7 @@
 - one object (or static method) supplies the dependencies of another object
 ![enter image description here](https://i.imgur.com/aW0yYJM.jpg)
 
-***
+<br>
 
 ## Dependecy Injection Lifetime
 
@@ -40,7 +40,7 @@ _Use Singletons where you need to maintain application wide state. Application c
 
 - found on [Stackoverflow](https://stackoverflow.com/questions/38138100/addtransient-addscoped-and-addsingleton-services-differences) from [Bereket Gebredingle](https://stackoverflow.com/users/8954773/bereket-gebredingle)
 
-***
+<br>
 
 ## Tags
 

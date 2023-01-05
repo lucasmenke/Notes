@@ -5,13 +5,7 @@
 - for the user it appears the same way as they were using client side rendering
 - downside is that it needs a connection
 
-***
-
-# MOC
-
-[Setup Blazor Server Project](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server-Project-Setup.md)
-
-***
+<br>
 
 ## Tags
 

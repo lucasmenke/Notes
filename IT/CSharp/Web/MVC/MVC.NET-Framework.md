@@ -16,7 +16,7 @@
 - Packages.config → manages NuGet packages / versions
 - Web.config → Config file
 
-***
+<br>
 
 ## Routing 
 
@@ -85,7 +85,7 @@
     }
 ```
 
-***
+<br>
 
 ## Controller
 
@@ -125,7 +125,7 @@ namespace MVC_BasicTutorials.Controllers
 ```
 ![csharp-mvc](https://i.imgur.com/L7S8Kqt.png)
 
-***
+<br>
 
 ## Action Methode
 
@@ -162,7 +162,7 @@ public ActionResult Edit(int id, string name)
 }
 ```
 
-***
+<br>
 
 ## Action Selector
 
@@ -220,7 +220,7 @@ public ActionResult GetAndPostAction()
 }
 ```
 
-***
+<br>
 
 ## Model
 - represents data & business logic
@@ -240,7 +240,7 @@ public class Student
 }
 ```
 
-***
+<br>
 
 ## View
 
@@ -259,7 +259,7 @@ public class Student
 - good practice to keep view name similar to action methode name
 - Template & Model class options can be used to scaffold the view → first create model than view
 
-***
+<br>
 
 ## Good to know
 
@@ -275,7 +275,7 @@ public class Student
 - static variables are global variables
 - Static data will be the same for all users of the application, while session is "per user"
 
-***
+<br>
 
 ## Tags
 
