@@ -26,7 +26,7 @@ commitTransaction;
 ```
 It will either transfer 100 bucks or leave both accounts in the initial state.
 
-***
+<br>
 
 ## Tags
 

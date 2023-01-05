@@ -10,13 +10,13 @@
 
 ***Examples:*** C# MVC, PHP, Blazor (server side & client side)
 
-***
+<br>
 
 ## MOC
 
-[Blazor Server](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Server.md)
+[Server sided project](https://github.com/lucasmenke/Suggestion-Website)
 
-***
+<br>
 
 ## Tags
 

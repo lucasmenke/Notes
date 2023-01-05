@@ -6,13 +6,13 @@
 
 ***Examples:*** React, Vue, Angular, Blazor (server side & client side)
 
-***
+<br>
 
 ## MOC
 
-[Blazor Client](https://github.com/lucasmenke/notes/blob/main/Content/Blazor-Client.md)
+[Client sided ecommerce store project](https://github.com/lucasmenke/EcommerceApp)
 
-***
+<br>
 
 ## Tags
 

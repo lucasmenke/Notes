@@ -28,7 +28,7 @@ SAN: Storage Area Network
 
 ![](https://i.imgur.com/mtgfE4M.png)
 
-***
+<br>
 
 ## Tags
 

@@ -6,19 +6,17 @@ API´s help to communicate with a database without knowing secret credentials. T
 
 ***Examples:***  library API´s (jQuery, Express, JavaScript) or data equests (weather forecast, financial data)
 
-***
+<br>
 
 ## Versions
 
 - different versions help to not break code when significant changes are made to an existing API´s
 
-***
+<br>
 
 ## MOC
 
-[ASP .NET Core Web API with Controllers](https://github.com/lucasmenke/notes/blob/main/Content/API.NET-Core-Controllers.md)
-
-[ASP .NET Core Web API Minimal](https://github.com/lucasmenke/notes/blob/main/Content/API.NET-Core-Minimal.md)
+[Ecommerce Store Project that uses an API to communicate with the database](https://github.com/lucasmenke/EcommerceApp)
 
 ***
 

@@ -2,25 +2,19 @@
 
 Using HttpContext the wrong way in Blazor Server Apps can lead to security vulnerabilities. 
 
-***
+<br>
 
 ## HttpContext
 
 HttpContext encapsulates all information about an individual HTTP request and response. An HttpContext instance is initialized when an HTTP request is received and is accessible by middleware and app frameworks such as Web API controllers, Razor Pages and more.
 
-***
+<br>
 
 ## Security Issues
 
-Using HttpContext the wrong way in Blazor Server Apps can lead to security vulnerabilities because  Blazor server apps live in server memory. That means that there are multiple apps hosted within the same process. Apps that share their state using a singleton can leak sensitive information across apps / [circuits]().
+Using HttpContext the wrong way in Blazor Server Apps can lead to security vulnerabilities because  Blazor server apps live in server memory. That means that there are multiple apps hosted within the same process. Apps that share their state using a singleton can leak sensitive information across apps / [circuits](https://github.com/lucasmenke/Notes/blob/main/IT/CSharp/Web/Blazor/Blazor-Circuit.md).
 
-***
-
-## IHttpContextAccessor
-
-Don't use [IHttpContextAccessor](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.ihttpcontextaccessor) within Blazor apps. Blazor apps run outside of the context of the ASP.NET Core pipeline. The HttpContext isn't guaranteed to be available within the IHttpContextAccessor, nor is it guaranteed to be holding the context that started the Blazor app.
-
-***
+<br>
 
 ## Using HttpContext safely
 
@@ -109,7 +103,7 @@ Welcome to your new app.
 <p>UserName: @(identitiy.UserName ?? "Not logged in")</p>
 ```
 
-***
+<br>
 
 ## Tags
 

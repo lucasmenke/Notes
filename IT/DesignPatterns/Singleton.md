@@ -4,7 +4,7 @@
 - Mostly, singletons don't allow any parameters to be specified when creating the instance 
 	- otherwise a second request for an instance but with a different parameter could be problematic
 
-***
+<br>
 
 ## 1. Version - not thread-safe
 
@@ -77,7 +77,7 @@ namespace Singleton
 Output >>  Singleton works, both variables contain the same instance.
 ```
 
-***
+<br>
 
 ## Lazy Singleton
 
@@ -95,7 +95,7 @@ Output >>  Singleton works, both variables contain the same instance.
     }
 ```
 
-***
+<br>
 
 ## Tags
 
