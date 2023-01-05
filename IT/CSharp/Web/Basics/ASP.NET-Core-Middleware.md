@@ -6,7 +6,7 @@ Middleware Components are assembled into the appplication to handle a HTTP reque
 	1. can be achieved by calling the next() method within the middleware
 2. can perform work before and after the next component in the pipeline.
 
-***
+<br>
 
 ## Middleware Properties
 
@@ -14,7 +14,7 @@ Middleware Components are assembled into the appplication to handle a HTTP reque
 	- f.e. authenticate user
 	- f.e. log request
 
-***
+<br>
 
 ## Process Flow
 
@@ -24,7 +24,7 @@ The middleware components can be found in the Program.cs
 ![](https://i.imgur.com/Xug06fJ.png)
 ![](https://i.imgur.com/xIGSNr1.png)
 
-***
+<br>
 
 ## Tags
 

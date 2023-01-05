@@ -7,7 +7,7 @@ In Blazor-Projects non of the mentioned techniques are needed because Blazor-App
 Blazor Server -> state is stored in the RAM of the server
 Balzor Client -> state is stored in the RAM of the client
 
-***
+<br>
 
 ## Losing the state
 
@@ -17,7 +17,7 @@ Balzor Client -> state is stored in the RAM of the client
 
 A Razor componenet doesn't have to render anything to keep it's state.
 
-***
+<br>
 
 ## Tags
 

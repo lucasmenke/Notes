@@ -5,7 +5,7 @@
 
 ASP.NET Core Web API > Check Box: Use controllers
 
-***
+<br>
 
 ## Project structure
 
@@ -98,14 +98,7 @@ namespace EngbersGewinnspieleApi.Controllers
 }
 ```
 
-***
-
-## Clean up project
-
-1. delete WeatherForecast.cs
-2. delete Controllers/WatherForecastController.cs
-
-***
+<br>
 
 ## Tags
 

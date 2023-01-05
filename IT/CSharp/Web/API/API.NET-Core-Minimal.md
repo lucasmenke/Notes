@@ -4,7 +4,7 @@
 
 ASP.NET Core Web API > Uncheck Box: Use controllers
 
-***
+<br>
 
 ## Project Structure
 
@@ -45,7 +45,7 @@ app.MapGet("api/helloWorld", () => "Hello World");
 app.Run();
 ```
 
-***
+<br>
 
 ## Tags
 
