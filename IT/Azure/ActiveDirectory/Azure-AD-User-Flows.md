@@ -79,8 +79,8 @@ In this guide I will explain how to set up three different user flows with the A
 3. "Domain name" is Domain value
 
 <ins>Find "Instance" value</ins>
-1. Add to value of Domain "https://" at the front
-	1. e.g. sampledomain.onmicrosoft.com -> https://sampledomain.onmicrosoft.com
+1. Add to value of Domain "https://" at the front & change "onmicrosoft" to b2clogin
+	1. e.g. sampledomain.onmicrosoft.com -> https://sampledomain.b2clogin.com
 
 <br>
 
@@ -99,6 +99,8 @@ app.MapBlazorHub();
 ```
 4. Add following code to Dependency Injection
 ``` C#
+builder.Services.AddServerSideBlazor().AddMicrosoftIdentityConsentHandler();
+builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));            
 ```
 5. Modify App.razor
@@ -141,6 +143,8 @@ app.UseRewriter(
                 context.HttpContext.Response.Redirect("/");
             }
         }));
+
+app.MapControllers();
 // end
 app.MapBlazorHub();
 ```
