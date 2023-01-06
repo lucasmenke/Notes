@@ -113,6 +113,17 @@ Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tu
 	6. User attributes and token claims -> select the ones you need
 8. Click on "Create"
 
+<ins>Test User flow susi</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "Azure AD B2C"
+3. Click on "User flows"
+4. Select susi user flow
+5. Click on "Run user flow"
+6. Click on "Access Tokens"
+7. Select "Ressources"
+8. Click "Run user flow"
+- if SuSi Page doesn't show up you did something wrong
+
 <br>
 
 ## Modify Appsettings
