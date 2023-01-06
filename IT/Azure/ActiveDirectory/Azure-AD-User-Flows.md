@@ -97,9 +97,52 @@ app.UseAuthorization();
 // end
 app.MapBlazorHub();
 ```
-4. Add Dependency Injection
+4. Add following code to Dependency Injection
 ``` C#
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)              .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));
+```
+5. Modify App.razor
+``` C#
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+	                @*if you want you can create a razor component for this page*@
+                    <h2>You are not authorized to access this section.</h2>                   
+                </NotAuthorized>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+```
+
+<br>
+
+## Configure redirect to homepage when logged out
+
+1. Add following code to Program.cs
+``` C#
+app.UseAuthorization();
+// newly added
+app.UseRewriter(
+    new RewriteOptions().Add(
+        context =>
+        {
+            if (context.HttpContext.Request.Path == "/MicrosoftIdentity/Account/SignedOut")
+            {
+                context.HttpContext.Response.Redirect("/");
+            }
+        }));
+// end
+app.MapBlazorHub();
 ```
 
 <br>
@@ -108,6 +151,19 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)  
 
 Only necessary if admins are needed in your project.
 
+1. In the SuSi-Flow "Return Claims - JobTitle" must be checked
+2. Add following code to Dependency Injection
+``` C#
+builder.Services.AddAuthorization(options =>
+{
+	options.AddPolicy("Admin", policy =>
+	{
+		policy.RequireClaim("jobTitle", "Admin");
+	});
+});
+```
+
+<br>
 
 ## MOC
 
