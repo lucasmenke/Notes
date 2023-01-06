@@ -23,16 +23,22 @@ In this note I will explain how to create an API that can only be accessed by lo
 <ins>Blazor Server App</ins>
 1. Create "ASP.NET Core Web API" project in the same solution
 	1. Authentication type -> None
-2. Add following nuget packages
+2. Set Blazor App as Startup Project
+3. Add following nuget packages
 	1. Microsoft.Identity.Client
-3. Add classes for reading appsettings.json
+4. Add classes for reading appsettings.json
 	1. Settings.cs ([example]())
 	2. NestedSettings.cs ([example]())
 	3. Extension.cs ([example]())
-4. Create folder "MsalClient" & add Interface and classes
+5. Create folder "MsalClient" & add Interface and classes
 	1. IPCAWrapper.cs ([example]())
 	2. PCAWrapper.cs ([example]())
 	3. PlatformConfig.cs ([example]())
-5. Modify "Program.cs"
+6. Modify "Program.cs"
 	1. inject IPCAWrapper ([example]())
-6. modify 
+7. modify "appsettings.json" ([example]())
+8. add imports to "Imports.razor" ([example]())
+9. create class Globals.cs to store access token ([example]())
+10. Modify "MainLayout.razor" to show Login / Logout Buttons ([example]())
+11. In my example I modified the WeatherForecastService.cs ([example]())
+12. In my example I modified the FetchData.razor ([example]())
