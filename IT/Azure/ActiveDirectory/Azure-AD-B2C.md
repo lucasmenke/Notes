@@ -43,7 +43,9 @@ Azure Active Directory B2C is a cloud solution for managing an active directory 
 <ins>Implicit grant and hybrid flows (Tokens)</ins>
 1. Search "b2c" in the searchbar on top
 2. Click on "Azure AD B2C"
-3. Click on "Authentication" (left menu)
-4. Tick "Access tokens (used for implicit flows)"
-5. Tick "ID tokens (used for implicit and hybrid flows)"
-6. Click on "Save"
+3. Click on "App registrations" (left menu)
+4. Click on newly created registration
+5. Click on "Authentication" (left menu)
+6. Tick "Access tokens (used for implicit flows)"
+7. Tick "ID tokens (used for implicit and hybrid flows)"
+8. Click on "Save"
