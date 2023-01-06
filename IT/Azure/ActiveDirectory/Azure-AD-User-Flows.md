@@ -52,5 +52,63 @@ In this guide I will explain how to set up three different user flows with the A
 
 <br>
 
-## Modify Code
+## Modify Appsettings
 
+1. Add following code to appsettings.json
+``` Json
+  "AzureAdB2C": {
+    "Instance": "",
+    "ClientId": "",
+    "CallbackPath": "/signin-oidc",
+    "Domain": "",
+    "SignUpSignInPolicyId": "B2C_1_susi",
+    "ResetPasswordPolicyId": "B2C_1_reset",
+    "EditProfilePolicyId": "B2C_1_edit"
+  }
+```
+
+<ins>Find "ClientId" value</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "App registrations" (left menu)
+3. Click on your registration
+4. "Application (client) ID" is the ClientId
+
+<ins>Find "Domain" value</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "Overview" (left menu)
+3. "Domain name" is Domain value
+
+<ins>Find "Instance" value</ins>
+1. Add to value of Domain "https://" at the front
+	1. e.g. sampledomain.onmicrosoft.com -> https://sampledomain.onmicrosoft.com
+
+<br>
+
+## Configure Authentication
+
+1. Add package "Microsoft.Identity.Web"
+2. Add package "Microsoft.Identity.Web.UI"
+3. Add following code to Program.cs
+``` C#
+app.UseRouting();
+// newly added
+app.UseAuthentication();
+app.UseAuthorization();
+// end
+app.MapBlazorHub();
+```
+4. Add Dependency Injection
+``` C#
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)              .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));
+```
+
+<br>
+
+## Admin Policy
+
+Only necessary if admins are needed in your project.
+
+
+## MOC
+
+[Suggestion Site App that uses Azure AD B2C](https://github.com/lucasmenke/SuggestionApp)
