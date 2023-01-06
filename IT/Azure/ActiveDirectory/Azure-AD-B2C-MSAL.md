@@ -121,6 +121,17 @@ Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tu
 }
 ```
 
+<ins>Find "Domain" value</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "Azure AD B2C"
+3. Click on "App registrations" (left menu)
+4. Click on newly created registration
+5. Click on "Branding & properties"
+6. "Publisher domain" is "Domain"
+
+<ins>Set "Instance"</ins>
+1. insert tenant name -> e.g. https://examplename.b2clogin.com/
+
 <ins>Find "ClientId" & "TenantId"value</ins>
 1. Search "b2c" in the searchbar on top
 2. Click on "App registrations" (left menu)
@@ -139,10 +150,19 @@ Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tu
 8. Click on "Add"
 9. Value is ClientSecret
 
-<ins>Find "Domain" value</ins>
-1. Search "b2c" in the searchbar on top
-2. Click on "Overview" (left menu)
-3. "Domain name" is Domain value
+<ins>Find "BaseUrl"</ins>
+- you get this after publishing the app to azure
+- e.g. https://{publishing-name}.azurewebsites.net
+1. In VS right click on project
+2. Click on "Publish..."
+3. Select "Azure" & click on "Next"
+4. Select Service & click on "Next"
+5. Click on "Create new"
+6. Fill in information
+	1. Name will be {publishing-name} in URL
+7. Click on "Create"
+8. Click "Next"
+9. Chose Deployment type & finish the publish
 
 
 
