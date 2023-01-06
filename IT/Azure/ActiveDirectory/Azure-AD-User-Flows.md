@@ -99,7 +99,7 @@ app.MapBlazorHub();
 ```
 4. Add following code to Dependency Injection
 ``` C#
-builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)              .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));            
 ```
 5. Modify App.razor
 ``` C#
