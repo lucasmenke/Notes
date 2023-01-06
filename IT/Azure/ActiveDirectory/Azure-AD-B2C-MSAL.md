@@ -85,6 +85,34 @@ Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tu
 10. Click on "Add permissions"
 11. Click on "Grant admin consent for {Tenant-Name}"
 12. Click on "Yes"
+
+<ins>Identity providers</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "Azure AD B2C"
+3. Click on "Identity providers"
+4. Click on provider you want to add
+5. Fill in informtion
+	1. Name -> Name of provider
+	2. Client Id -> I explain it in this document how to get it (Section "Modify Appsettings "-> "Find "ClientId" & "TenantId"value")
+	3. Client secret -> explantaion can be found unter Section "Modify Appsettings "-> "Find ClientSecret"
+6. Click "Save"
+
+<ins>User flow susi</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "Azure AD B2C"
+3. Click on "User flows"
+4. Click on "New user flow"
+5. Click on "Sign up and sign in"
+6. Select "Recommended"
+7. Fill in information
+	1. Name -> social_susi
+	2. Identity providers -> Email signup
+	3. Social identity providers -> select create ones
+	4. Multifactor authentication -> leave defaults as they are
+	5. Conditional access -> leave empty
+	6. User attributes and token claims -> select the ones you need
+8. Click on "Create"
+
 <br>
 
 ## Modify Appsettings
@@ -162,7 +190,10 @@ Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tu
 	1. Name will be {publishing-name} in URL
 7. Click on "Create"
 8. Click "Next"
-9. Chose Deployment type & finish the publish
+9. Under "API Management" select "Skip this step"
+10. Click next & chose your deployment type
+11. Click "Finish"
+12. Click "Publish"
 
 
 
