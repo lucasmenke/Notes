@@ -4,7 +4,7 @@ Azure Active Directory B2C is a cloud solution for managing an active directory 
 
 <br>
 
-## Setting AD up
+## Setting up AD
 
 <ins>Register subscription to use AD</ins>
 1. Log in to https://azure.microsoft.com
