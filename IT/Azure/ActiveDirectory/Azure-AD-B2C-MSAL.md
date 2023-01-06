@@ -126,7 +126,7 @@ Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tu
 
 <br>
 
-## Modify Appsettings
+## Modify Appsettings (for API)
 
 1. Add following code to appsettings.json
 ``` Json
