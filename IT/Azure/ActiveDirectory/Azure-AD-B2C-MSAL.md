@@ -4,6 +4,8 @@ Azure Active Directory B2C is a cloud solution for managing an active directory 
 
 Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant
 
+In this guide I will show how to setup an Azure AD B2C and connect it to an .NET Core application. Furthermore I will show how to add Admin users.
+
 <br>
 
 ## Setting up AD
