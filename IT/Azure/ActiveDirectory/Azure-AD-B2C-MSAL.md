@@ -105,7 +105,116 @@ Microsoft Guide: https://learn.microsoft.com/en-us/azure/active-directory-b2c/tu
 2. Click on "App registrations" (left menu)
 3. Click on your registration
 4. "Application (client) ID" is the ClientId
-5. Directory (tenant) ID is the TenantId
 
+<ins>Find "Domain"</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "Overview" (left menu)
+3. "Domain name" is Domain
 
+<ins>Nuget packages</ins>
+1. add "Microsoft.Identity.Web"
+2. add "Microsoft.Identity.Web.UI"
 
+<ins>Program.cs</ins>
+1. add following code
+``` C#
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseRewriter(
+    new RewriteOptions().Add(
+        context =>
+        {
+            if (context.HttpContext.Request.Path == "/MicrosoftIdentity/Account/SignedOut")
+            {
+                context.HttpContext.Response.Redirect("/");
+            }
+        }));
+
+app.MapControllers();
+```
+
+<ins>Dependency Injection</ins>
+1. add following code
+``` C#
+builder.Services.AddServerSideBlazor().AddMicrosoftIdentityConsentHandler();
+builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdB2C"));
+// for identifying admins
+builder.Services.AddAuthorization(options =>
+{
+	options.AddPolicy("Admin", policy =>
+	{
+		policy.RequireClaim("jobTitle", "Admin");
+	});
+});
+```
+
+<ins>App.razor</ins>
+1. add following code
+``` HTML
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <h2>You are not authorized.</h2>
+                </NotAuthorized>
+            </AuthorizeRouteView>
+            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+```
+
+<ins>MainLayout.razor</ins>
+1. add Login / Logout / Admin Buttons (I created a shared component)
+``` HTML
+@inherits LayoutComponentBase
+
+<PageTitle>SuggestionAppUI</PageTitle>
+
+<div class="page">
+    <main>
+        <div>
+            <LoginDisplay />
+        </div>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+```
+2. create shared component if needed (mine is called "LoginDisplay")
+``` HTML
+<AuthorizeView Policy="Admin">
+    <a href="/AdminApproval">Admin</a>
+</AuthorizeView>
+<AuthorizeView>
+    <Authorized>
+        <a href="/Profile">Profile</a>
+        <a href="MicrosoftIdentity/Account/SignOut">Logout</a>
+    </Authorized>
+    <NotAuthorized>
+        <a href="MicrosoftIdentity/Account/SignIn">Login</a>
+    </NotAuthorized>
+</AuthorizeView>
+```
+
+<br>
+
+## MOC
+
+[Suggestion App that uses Azure AD B2C](https://github.com/lucasmenke/SuggestionApp)
+
+<br>
+
+## Tags
+
+#Programming #CSharp #Azure #AzureADB2C #ActiveDirectory 
