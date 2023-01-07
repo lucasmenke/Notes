@@ -209,6 +209,21 @@ builder.Services.AddAuthorization(options =>
 </AuthorizeView>
 ```
 
+<ins>Authorize Admin</ins>
+``` C#
+@page "/AdminApproval"
+@attribute [Authorize(Policy = "Admin")]
+```
+
+<ins>Give user admin status</ins>
+1. Search "b2c" in the searchbar on top
+2. Click on "Azure AD B2C"
+3. Click on "Users"
+4. Click on user that should get admin status
+5. Click on "Edit"
+6. Fill in "Job title" with "Admin"
+7. Click on "Save"
+
 <br>
 
 ## MOC
