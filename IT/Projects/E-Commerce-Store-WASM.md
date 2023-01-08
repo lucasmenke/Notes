@@ -4,6 +4,8 @@ I build a simple E-Commerce store with custom login, stripe integration and admi
 
 [Link to project repo](https://github.com/lucasmenke/EcommerceApp) | Finished: 05.01.23  
 
+<br>
+
 ## Pictures
 
 ![](https://i.imgur.com/ziX0Nad.png)
