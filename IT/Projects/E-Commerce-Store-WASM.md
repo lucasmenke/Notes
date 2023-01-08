@@ -11,8 +11,8 @@ I build a simple E-Commerce store with custom login, stripe integration and admi
 ![](https://i.imgur.com/ziX0Nad.png)
 ![](https://i.imgur.com/QnuX2lJ.png)
 ![](https://i.imgur.com/GtpTaqy.png)
-![](https://i.imgur.com/2LAH2fz.png)
-![](https://i.imgur.com/bHSgqgv.png)
+![](https://i.imgur.com/Il84bDC.png)
+![](https://i.imgur.com/AGfQTkG.png)
 
 <br>
 
